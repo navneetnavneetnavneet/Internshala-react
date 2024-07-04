@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
-    <div className="w-full min-h-screen bg-red-100">
-      <Nav />
+    <div className="w-full min-h-screen">
       <StudentDetails />
     </div>
   );

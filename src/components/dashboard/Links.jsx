@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Links = (props) => {
-    console.log(props.hiddenDiv);
   return (
     <div className={`w-[15%] py-5 bg-white shadow absolute top-20 right-40 ${props.hiddenDiv}`}>
       <h1 className="px-4 text-xl font-medium">John Deo</h1>
@@ -17,10 +16,10 @@ const Links = (props) => {
           <i class="ri-arrow-right-s-line text-[1.4rem]"></i>
         </div>
       </div>
-      <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+      <Link to="/student/dashboard" className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
         Home
       </Link>
-      <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+      <Link to="/student/application" className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
         My Application
       </Link>
       <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">

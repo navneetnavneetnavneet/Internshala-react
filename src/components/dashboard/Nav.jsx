@@ -1,7 +1,6 @@
 import React from "react";
 import NavRight from "./NavRight";
 import NavLeft from "./NavLeft";
-import Links from "./Links";
 
 const Nav = () => {
   return (
