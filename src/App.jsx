@@ -8,6 +8,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Footer from "./components/footer/Footer";
 import Application from "./components/application/Application";
 import Nav from "./components/dashboard/Nav";
+import Bookmark from "./components/bookmark/Bookmark";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/employer/signin" element={<StudentLogin />} />
         <Route path="/student/dashboard" element={<Dashboard />} />
         <Route path="/student/application" element={<Application />} />
+        <Route path="/bookmark" element={<Bookmark />} />
       </Routes>
 
       {pathname == "/student/signup" ||

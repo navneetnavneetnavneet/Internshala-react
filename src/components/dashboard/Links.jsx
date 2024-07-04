@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 
 const Links = (props) => {
   return (
-    <div className={`w-[15%] py-5 bg-white shadow absolute top-20 right-40 ${props.hiddenDiv}`}>
+    <div
+      className={`w-[15%] py-5 bg-white shadow absolute top-20 right-40 ${props.hiddenDiv}`}
+    >
       <h1 className="px-4 text-xl font-medium">John Deo</h1>
       <h3 className="px-4 font-semibold">example@gmail.com</h3>
       <div className="hover:text-[#00A5EC] w-full mt-5 font-medium flex items-center justify-between border-t border-b border-zinc-200 py-1">
@@ -16,13 +18,22 @@ const Links = (props) => {
           <i class="ri-arrow-right-s-line text-[1.4rem]"></i>
         </div>
       </div>
-      <Link to="/student/dashboard" className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+      <Link
+        to="/student/dashboard"
+        className="px-4 py-1 block font-medium hover:text-[#00A5EC]"
+      >
         Home
       </Link>
-      <Link to="/student/application" className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+      <Link
+        to="/student/application"
+        className="px-4 py-1 block font-medium hover:text-[#00A5EC]"
+      >
         My Application
       </Link>
-      <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+      <Link
+        to="/bookmark"
+        className="px-4 py-1 block font-medium hover:text-[#00A5EC]"
+      >
         My Bookmarks
       </Link>
       <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
@@ -31,10 +42,14 @@ const Links = (props) => {
       <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
         Edit Prefrences
       </Link>
-      <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+      <Link
+      to="safety"
+       className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
         Safety Tips
       </Link>
-      <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+      <Link
+      to="/student/help"
+       className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
         Help Center
       </Link>
       <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
