@@ -12,6 +12,17 @@ import Bookmark from "./components/bookmark/Bookmark";
 import Help from "./components/help/Help"
 import Safety from "./components/safety/Safety";
 import Contact from "./components/cantact/Contact";
+import ChangePassword from "./components/change-password/ChangePassword";
+import ChangeEmail from "./components/change-email/ChangeEmail";
+import DeleteAccount from "./components/delete-account/DeleteAccount";
+import Resume from "./components/resume/Resume";
+
+import JobFrom from "./components/resume/form/JobForm";
+import InternshipForm from "./components/resume/form/InternshipForm";
+import TrainingForm from "./components/resume/form/TrainingForm";
+import ProjectForm from "./components/resume/form/ProjectForm";
+import AdditionalForm from "./components/resume/form/AdditionalForm";
+import ResponsibilityForm from "./components/resume/form/ResponsibilityForm";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -32,6 +43,18 @@ const App = () => {
         <Route path="/safety" element={<Safety />} />
         <Route path="/student/help" element={<Help />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/student/change_password" element={<ChangePassword />} />
+        <Route path="/student/change_email" element={<ChangeEmail />} />
+        <Route path="/student/delete_account" element={<DeleteAccount />} />
+        <Route path="/student/resume" element={<Resume />} />
+
+        {/* resume-form */}
+        <Route path="/student/resume/job" element={<JobFrom />} />
+        <Route path="/student/resume/internship" element={<InternshipForm />} />
+        <Route path="/student/resume/training" element={<TrainingForm />} />
+        <Route path="/student/resume/project" element={<ProjectForm />} />
+        <Route path="/student/resume/accomplishment" element={<AdditionalForm />} />
+        <Route path="/student/resume/responsibility" element={<ResponsibilityForm />} />
       </Routes>
 
       {pathname == "/student/signup" ||

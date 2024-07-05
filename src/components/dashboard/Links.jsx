@@ -1,7 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Links = (props) => {
+  const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    navigate("/");
+  };
   return (
     <div
       className={`w-[15%] py-5 bg-white shadow absolute top-20 right-40 ${props.hiddenDiv}`}
@@ -36,34 +41,49 @@ const Links = (props) => {
       >
         My Bookmarks
       </Link>
-      <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+      <Link
+      to="/student/resume"
+       className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
         Edit Resume
       </Link>
       <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
         Edit Prefrences
       </Link>
       <Link
-      to="safety"
-       className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+        to="safety"
+        className="px-4 py-1 block font-medium hover:text-[#00A5EC]"
+      >
         Safety Tips
       </Link>
       <Link
-      to="/student/help"
-       className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+        to="/student/help"
+        className="px-4 py-1 block font-medium hover:text-[#00A5EC]"
+      >
         Help Center
       </Link>
-      <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+      <Link
+        to="/student/change_password"
+        className="px-4 py-1 block font-medium hover:text-[#00A5EC]"
+      >
         Change Password
       </Link>
-      <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+      <Link
+        to="/student/change_email"
+        className="px-4 py-1 block font-medium hover:text-[#00A5EC]"
+      >
         Change Email Address
       </Link>
-      <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+      <Link
+      to="/student/delete_account" 
+      className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
         Delete My Account
       </Link>
-      <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+      <button
+        onClick={logoutHandler}
+        className="px-4 py-1 block font-medium hover:text-[#00A5EC]"
+      >
         Logout
-      </Link>
+      </button>
     </div>
   );
 };
