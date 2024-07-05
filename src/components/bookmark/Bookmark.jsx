@@ -11,7 +11,7 @@ const Bookmark = () => {
       />
       <h2 className="text-2xl font-semibold">No bookmarks</h2>
       <p className="text-zinc-600 my-5">You have no active bookmarked internships or jobs</p>
-      <button className="px-4 py-2 rounded bg-[#00A5EC] tracking-tight font-semibold text-white">
+      <button className="px-4 py-2 rounded bg-[#00A5EC] hover:bg-[#0d95cf] tracking-tight font-semibold text-white">
         Browser internships
       </button>
     </div>

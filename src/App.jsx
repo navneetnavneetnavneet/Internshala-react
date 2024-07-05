@@ -9,6 +9,8 @@ import Footer from "./components/footer/Footer";
 import Application from "./components/application/Application";
 import Nav from "./components/dashboard/Nav";
 import Bookmark from "./components/bookmark/Bookmark";
+import Help from "./components/help/Help"
+import Safety from "./components/safety/Safety";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -26,6 +28,8 @@ const App = () => {
         <Route path="/student/dashboard" element={<Dashboard />} />
         <Route path="/student/application" element={<Application />} />
         <Route path="/bookmark" element={<Bookmark />} />
+        <Route path="/safety" element={<Safety />} />
+        <Route path="/student/help" element={<Help />} />
       </Routes>
 
       {pathname == "/student/signup" ||
