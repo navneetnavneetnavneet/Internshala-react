@@ -11,6 +11,7 @@ import Nav from "./components/dashboard/Nav";
 import Bookmark from "./components/bookmark/Bookmark";
 import Help from "./components/help/Help"
 import Safety from "./components/safety/Safety";
+import Contact from "./components/cantact/Contact";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/bookmark" element={<Bookmark />} />
         <Route path="/safety" element={<Safety />} />
         <Route path="/student/help" element={<Help />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
 
       {pathname == "/student/signup" ||
