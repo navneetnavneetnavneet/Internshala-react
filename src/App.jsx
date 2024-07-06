@@ -23,13 +23,21 @@ import TrainingForm from "./components/resume/form/TrainingForm";
 import ProjectForm from "./components/resume/form/ProjectForm";
 import AdditionalForm from "./components/resume/form/AdditionalForm";
 import ResponsibilityForm from "./components/resume/form/ResponsibilityForm";
+import PersonalDetailsForm from "./components/resume/form/PersonalDetailsForm";
 
 const App = () => {
   const { pathname } = useLocation();
 
   return (
     <div className="w-full min-h-screen relative">
-      {pathname == "/" ? "" : <Nav />}
+      {pathname == "/" || 
+      pathname == "/student/resume/job" ||
+      pathname == "/student/resume/internship" ||
+      pathname == "/student/resume/training" ||
+      pathname == "/student/resume/project" ||
+      pathname == "/student/resume/accomplishment" ||
+      pathname == "/student/resume/responsibility" ||
+      pathname == "/student/resume/personal_details" ? "" : <Nav />}
       {/* <Nav /> */}
       <Routes>
         <Route path="/" element={<Navbar />} />
@@ -55,6 +63,7 @@ const App = () => {
         <Route path="/student/resume/project" element={<ProjectForm />} />
         <Route path="/student/resume/accomplishment" element={<AdditionalForm />} />
         <Route path="/student/resume/responsibility" element={<ResponsibilityForm />} />
+        <Route path="/student/resume/personal_details" element={<PersonalDetailsForm />} />
       </Routes>
 
       {pathname == "/student/signup" ||

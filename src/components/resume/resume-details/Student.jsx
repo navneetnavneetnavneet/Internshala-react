@@ -7,7 +7,9 @@ const Student = () => {
       <div className="flex justify-between items-start">
         <div className="flex items-center gap-2">
           <h1 className="text-[2vw] font-semibold">Navneetsingh Solanki</h1>
-          <i class="ri-pencil-line text-[1.4rem]"></i>
+          <Link to="/student/resume/personal_details">
+            <i class="ri-pencil-line text-[1.4rem]"></i>
+          </Link>
         </div>
         <Link className="flex items-center gap-2 text-[#00A5EC] font-semibold">
           <i class="ri-download-2-line"></i>
