@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import StudentRegister from "./components/register/StudentRegister";
@@ -9,7 +9,7 @@ import Footer from "./components/footer/Footer";
 import Application from "./components/application/Application";
 import Nav from "./components/dashboard/Nav";
 import Bookmark from "./components/bookmark/Bookmark";
-import Help from "./components/help/Help"
+import Help from "./components/help/Help";
 import Safety from "./components/safety/Safety";
 import Contact from "./components/cantact/Contact";
 import ChangePassword from "./components/change-password/ChangePassword";
@@ -24,20 +24,31 @@ import ProjectForm from "./components/resume/form/ProjectForm";
 import AdditionalForm from "./components/resume/form/AdditionalForm";
 import ResponsibilityForm from "./components/resume/form/ResponsibilityForm";
 import PersonalDetailsForm from "./components/resume/form/PersonalDetailsForm";
+import { useDispatch } from "react-redux";
+import { asyncLoad } from "./store/actions/studentActions";
 
 const App = () => {
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(asyncLoad());
+  }, []);
 
   return (
     <div className="w-full min-h-screen relative">
-      {pathname == "/" || 
+      {pathname == "/" ||
       pathname == "/student/resume/job" ||
       pathname == "/student/resume/internship" ||
       pathname == "/student/resume/training" ||
       pathname == "/student/resume/project" ||
       pathname == "/student/resume/accomplishment" ||
       pathname == "/student/resume/responsibility" ||
-      pathname == "/student/resume/personal_details" ? "" : <Nav />}
+      pathname == "/student/resume/personal_details" ? (
+        ""
+      ) : (
+        <Nav />
+      )}
       {/* <Nav /> */}
       <Routes>
         <Route path="/" element={<Navbar />} />
@@ -61,15 +72,24 @@ const App = () => {
         <Route path="/student/resume/internship" element={<InternshipForm />} />
         <Route path="/student/resume/training" element={<TrainingForm />} />
         <Route path="/student/resume/project" element={<ProjectForm />} />
-        <Route path="/student/resume/accomplishment" element={<AdditionalForm />} />
-        <Route path="/student/resume/responsibility" element={<ResponsibilityForm />} />
-        <Route path="/student/resume/personal_details" element={<PersonalDetailsForm />} />
+        <Route
+          path="/student/resume/accomplishment"
+          element={<AdditionalForm />}
+        />
+        <Route
+          path="/student/resume/responsibility"
+          element={<ResponsibilityForm />}
+        />
+        <Route
+          path="/student/resume/personal_details"
+          element={<PersonalDetailsForm />}
+        />
       </Routes>
 
       {pathname == "/student/signup" ||
       pathname == "/student/signin" ||
       pathname == "/employer/signup" ? (
-        <Navbar />
+        ""
       ) : (
         <Footer />
       )}

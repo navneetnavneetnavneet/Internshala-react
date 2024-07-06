@@ -5,7 +5,7 @@ const NavRight = () => {
   return (
     <div className="flex items-center gap-5">
       <Link className="flex items-center gap-2">
-        <i class="ri-search-line text-[1.4rem]"></i> Search
+        <i className="ri-search-line text-[1.4rem]"></i> Search
       </Link>
       <Link
         to="/student/signin"

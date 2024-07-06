@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { asyncStudentSignin } from "../../store/actions/studentActions";
 
 const StudentLogin = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +19,8 @@ const StudentLogin = () => {
         email,
         password,
       };
-      console.log({ student });
+      dispatch(asyncStudentSignin(student));
+      
     } else {
       let emaploy = {
         email,
@@ -35,7 +39,7 @@ const StudentLogin = () => {
       <div className="w-[27%] rounded-lg bg-white py-5 px-5">
         <i
           onClick={closeHandler}
-          class="ri-close-line text-end block text-2xl w-full"
+          className="ri-close-line text-end block text-2xl w-full"
         ></i>
 
         <div className="w-full flex">

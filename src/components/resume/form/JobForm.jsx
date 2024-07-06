@@ -20,7 +20,7 @@ const JobForm = () => {
     e.preventDefault();
 
     const job = {
-      description,
+      designation,
       profile,
       organization,
       location,

@@ -15,12 +15,12 @@ const Links = (props) => {
       <h3 className="px-4 font-semibold">example@gmail.com</h3>
       <div className="hover:text-[#00A5EC] w-full mt-5 font-medium flex items-center justify-between border-t border-b border-zinc-200 py-1">
         <div className="flex items-center gap-1 px-4">
-          <i class="ri-star-s-fill text-yellow-400"></i>
+          <i className="ri-star-s-fill text-yellow-400"></i>
           <h5>5</h5>
         </div>
         <div className="flex items-center gap-1 px-4">
           <h6>Know More</h6>
-          <i class="ri-arrow-right-s-line text-[1.4rem]"></i>
+          <i className="ri-arrow-right-s-line text-[1.4rem]"></i>
         </div>
       </div>
       <Link
