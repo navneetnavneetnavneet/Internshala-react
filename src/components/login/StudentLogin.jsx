@@ -104,7 +104,10 @@ const StudentLogin = () => {
                 className="px-4 py-2 mb-5 rounded w-full border outline-1 outline-sky-200"
               />
             </div>
-            <Link className="text-[#00A5EC] font-semibold w-full block text-end">
+            <Link
+              to="/student/forget_password"
+              className="text-[#00A5EC] font-semibold w-full block text-end"
+            >
               Forget Password?
             </Link>
             <button className="w-full py-2 my-5 rounded bg-[#00A5EC] text-white font-semibold">

@@ -26,6 +26,8 @@ import ResponsibilityForm from "./components/resume/form/ResponsibilityForm";
 import PersonalDetailsForm from "./components/resume/form/PersonalDetailsForm";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncLoad } from "./store/actions/studentActions";
+import ForgetPassword from "./components/forget-password/ForgetPassword";
+import NewPassword from "./components/forget-password/NewPassword";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -33,7 +35,6 @@ const App = () => {
   const dispatch = useDispatch();
 
   const { isAuthenticated } = useSelector((state) => state.studentReducer);
-  console.log(isAuthenticated);
 
   useEffect(() => {
     dispatch(asyncLoad());
@@ -63,6 +64,8 @@ const App = () => {
         <Route path="/employer/signup" element={<EmployerRegister />} />
         <Route path="/student/signin" element={<StudentLogin />} />
         <Route path="/employer/signin" element={<StudentLogin />} />
+        <Route path="/student/forget_password" element={<ForgetPassword />} />
+        <Route path="/student/forget-link/:userId" element={<NewPassword />} />
         <Route path="/student/dashboard" element={<Dashboard />} />
         <Route path="/student/application" element={<Application />} />
         <Route path="/bookmark" element={<Bookmark />} />
