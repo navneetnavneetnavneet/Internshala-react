@@ -62,16 +62,36 @@ export const asyncForgetPassword = (email) => async (dispatch, getState) => {
   }
 };
 
-export const asyncNewPassword = (userId, password) => async () => {
+export const asyncNewPassword =
+  (userId, password) => async (dispatch, getState) => {
+    try {
+      console.log(password);
+      const { data } = await axios.post(`/student/forget-link/${userId}`, {
+        password,
+      });
+      console.log(data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+// Only for loggedIn Student
+export const asyncChangePassword = (password) => async (dispatch, getState) => {
   try {
-    console.log(password);
-    const { data } = await axios.post(`/student/forget-link/${userId}`, {
-      password,
-    });
+    const { data } = await axios.post("/student/reset-password/", { password });
     console.log(data);
+    // dispatch(asyncLoad());
   } catch (error) {
     console.log(error.response.data);
   }
 };
 
-
+export const asyncChangeEmail = (email) => async (dispatch, getState) => {
+  try {
+    console.log(email);
+    const { data } = await axios.post("/student/change-email", { email });
+    console.log(data);
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};

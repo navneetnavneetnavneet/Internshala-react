@@ -1,18 +1,27 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { asyncChangePassword } from "../../store/actions/studentActions";
+import { useNavigate } from "react-router-dom";
 
 const ChangePassword = () => {
+  const navigate = useNavigate();
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const changePasswordHandler = (e) => {
     e.preventDefault();
 
-    console.log(password);
+    dispatch(asyncChangePassword(password));
+    navigate("/student/dashboard");
   };
 
   return (
     <div className="w-full h-screen py-10 flex flex-col items-center">
       <h1 className="text-2xl font-semibold text-center">Change Password</h1>
-      <form onSubmit={changePasswordHandler} className="w-1/4 rounded border mt-5 p-5">
+      <form
+        onSubmit={changePasswordHandler}
+        className="w-1/4 rounded border mt-5 p-5"
+      >
         <div>
           <label htmlFor="passowrd">New Password</label>
           <input

@@ -1,12 +1,18 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { asyncChangeEmail } from "../../store/actions/studentActions";
 
 const ChangeEmail = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
 
   const chnageEmailHandler = (e) => {
     e.preventDefault();
 
-    console.log(email);
+    dispatch(asyncChangeEmail(email));
+    navigate("/student/dashboard");
   };
 
   return (
@@ -20,7 +26,10 @@ const ChangeEmail = () => {
         to your new email address after this change. Also, ensure that you have
         access to both the email accounts for making the change.
       </p>
-      <form onSubmit={chnageEmailHandler} className="w-1/4 rounded border mt-5 p-5">
+      <form
+        onSubmit={chnageEmailHandler}
+        className="w-1/4 rounded border mt-5 p-5"
+      >
         <div>
           <label htmlFor="email">New email address</label>
           <input
