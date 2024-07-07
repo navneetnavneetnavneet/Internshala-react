@@ -88,9 +88,18 @@ export const asyncChangePassword = (password) => async (dispatch, getState) => {
 
 export const asyncChangeEmail = (email) => async (dispatch, getState) => {
   try {
-    console.log(email);
     const { data } = await axios.post("/student/change-email", { email });
     console.log(data);
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
+
+export const asyncStudentDelete = () => async (dispatch, getState) => {
+  try {
+    const { data } = await axios.get("/student/delete");
+    console.log(data);
+    dispatch(remove());
   } catch (error) {
     console.log(error.response.data);
   }
