@@ -21,7 +21,7 @@ export const asyncStudentSignup =
         firstName,
         lastName,
       });
-      console.log(data);
+      // console.log(data);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);
@@ -34,10 +34,18 @@ export const asyncStudentSignin =
     try {
       console.log(email);
       const { data } = await axios.post("/student/signin", { email, password });
-      console.log(data);
+      // console.log(data);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);
     }
   };
 
+export const asyncStudentSignout = () => async () => {
+  try {
+    await axios.get("/student/signout");
+    dispatch(remove());
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};

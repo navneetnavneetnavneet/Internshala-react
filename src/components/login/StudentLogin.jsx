@@ -20,7 +20,9 @@ const StudentLogin = () => {
         password,
       };
       dispatch(asyncStudentSignin(student));
-      
+
+      setEmail("");
+      setPassword("");
     } else {
       let emaploy = {
         email,

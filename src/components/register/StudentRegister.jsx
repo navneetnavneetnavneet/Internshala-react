@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { asyncStudentSignup } from "../../store/actions/studentActions";
 
 const StudentRegister = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
@@ -22,6 +23,7 @@ const StudentRegister = () => {
     };
 
     dispatch(asyncStudentSignup(newUser));
+    navigate("/student/dashboard");
   };
 
   return (

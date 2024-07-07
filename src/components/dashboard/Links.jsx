@@ -1,10 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { asyncStudentSignout } from "../../store/actions/studentActions";
 
 const Links = (props) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const logoutHandler = () => {
+    dispatch(asyncStudentSignout());
     navigate("/");
   };
   return (
@@ -42,8 +46,9 @@ const Links = (props) => {
         My Bookmarks
       </Link>
       <Link
-      to="/student/resume"
-       className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+        to="/student/resume"
+        className="px-4 py-1 block font-medium hover:text-[#00A5EC]"
+      >
         Edit Resume
       </Link>
       <Link className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
@@ -74,8 +79,9 @@ const Links = (props) => {
         Change Email Address
       </Link>
       <Link
-      to="/student/delete_account" 
-      className="px-4 py-1 block font-medium hover:text-[#00A5EC]">
+        to="/student/delete_account"
+        className="px-4 py-1 block font-medium hover:text-[#00A5EC]"
+      >
         Delete My Account
       </Link>
       <button

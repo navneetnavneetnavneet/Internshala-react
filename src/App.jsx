@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import StudentRegister from "./components/register/StudentRegister";
 import EmployerRegister from "./components/register/EmployerRegister";
@@ -24,16 +24,23 @@ import ProjectForm from "./components/resume/form/ProjectForm";
 import AdditionalForm from "./components/resume/form/AdditionalForm";
 import ResponsibilityForm from "./components/resume/form/ResponsibilityForm";
 import PersonalDetailsForm from "./components/resume/form/PersonalDetailsForm";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { asyncLoad } from "./store/actions/studentActions";
 
 const App = () => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { isAuthenticated } = useSelector((state) => state.studentReducer);
+  console.log(isAuthenticated);
 
   useEffect(() => {
     dispatch(asyncLoad());
-  }, []);
+
+    isAuthenticated && navigate("/student/dashboard");
+    !isAuthenticated && navigate("/student/signin");
+  }, [isAuthenticated]);
 
   return (
     <div className="w-full min-h-screen relative">
