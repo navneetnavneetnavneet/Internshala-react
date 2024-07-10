@@ -29,6 +29,9 @@ import { asyncLoad } from "./store/actions/studentActions";
 import ForgetPassword from "./components/forget-password/ForgetPassword";
 import NewPassword from "./components/forget-password/NewPassword";
 import Profile from "./components/employ/employer-profile/Profile";
+import EmployerEditProfile from "./components/employ/employer-edit-profile/EmployerEditProfile";
+import EmployerUpdatePassword from "./components/employ/employer-change-password/EmployerUpdatePassword";
+import EmployerDeleteAccount from "./components/employ/employer-delete-account/EmployerDeleteAccount";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -98,6 +101,9 @@ const App = () => {
 
         {/* employer routes */}
         <Route path="/employer/profile" element={<Profile />} />
+        <Route path="/employer/edit_profile" element={<EmployerEditProfile />} />
+        <Route path="/employer/change_password" element={<EmployerUpdatePassword />} />
+        <Route path="/employer/delete_account" element={<EmployerDeleteAccount />} />
       </Routes>
 
       {pathname == "/student/signup" ||
