@@ -28,6 +28,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { asyncLoad } from "./store/actions/studentActions";
 import ForgetPassword from "./components/forget-password/ForgetPassword";
 import NewPassword from "./components/forget-password/NewPassword";
+import Profile from "./components/employ/employer-profile/Profile";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -36,12 +37,12 @@ const App = () => {
 
   const { isAuthenticated } = useSelector((state) => state.studentReducer);
 
-  useEffect(() => {
-    dispatch(asyncLoad());
+  // useEffect(() => {
+  //   dispatch(asyncLoad());
 
-    isAuthenticated && navigate("/student/dashboard");
-    !isAuthenticated && navigate("/student/signin");
-  }, [isAuthenticated]);
+  //   isAuthenticated && navigate("/student/dashboard");
+  //   !isAuthenticated && navigate("/student/signin");
+  // }, [isAuthenticated]);
 
   return (
     <div className="w-full min-h-screen relative">
@@ -94,6 +95,9 @@ const App = () => {
           path="/student/resume/personal_details"
           element={<PersonalDetailsForm />}
         />
+
+        {/* employer routes */}
+        <Route path="/employer/profile" element={<Profile />} />
       </Routes>
 
       {pathname == "/student/signup" ||
