@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { asyncStudentSignout } from "../../store/actions/studentActions";
+import { asyncStudentSignout } from "../../../store/actions/studentActions";
 
 const Links = (props) => {
   const navigate = useNavigate();

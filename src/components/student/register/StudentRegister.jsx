@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { asyncStudentSignup } from "../../store/actions/studentActions";
+import { asyncStudentSignup } from "../../../store/actions/studentActions";
 
 const StudentRegister = () => {
   const navigate = useNavigate();

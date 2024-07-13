@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { asyncNewPassword } from "../../store/actions/studentActions";
+import { asyncNewPassword } from "../../../store/actions/studentActions";
 
 const NewPassword = () => {
   const navigate = useNavigate();

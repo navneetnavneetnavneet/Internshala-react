@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { asyncChangeEmail } from "../../store/actions/studentActions";
+import { asyncChangeEmail } from "../../../store/actions/studentActions";
 
 const ChangeEmail = () => {
   const navigate = useNavigate();

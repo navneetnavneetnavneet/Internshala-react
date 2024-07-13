@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { asyncForgetPassword } from "../../store/actions/studentActions";
+import { asyncForgetPassword } from "../../../store/actions/studentActions";
 import { useNavigate } from "react-router-dom";
 
 const ForgetPassword = () => {
