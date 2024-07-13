@@ -33,7 +33,7 @@ const StudentLogin = () => {
   };
 
   const closeHandler = () => {
-    navigate(-1);
+    navigate("/student/signup");
   };
 
   return (
