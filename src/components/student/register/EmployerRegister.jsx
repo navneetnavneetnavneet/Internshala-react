@@ -1,24 +1,28 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { asyncEmployerSignup } from "../../../store/actions/employerActions";
 
 const EmployerRegister = () => {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [number, setNumber] = useState("");
+  const [contact, setContact] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const newEmploye = {
+    const newEmployer = {
       email,
       password,
       firstName,
       lastName,
-      number,
+      contact,
     };
-    console.log(newEmploye);
+    dispatch(asyncEmployerSignup(newEmployer));
   };
   return (
     <div className="flex px-[10%] relative">
@@ -94,12 +98,12 @@ const EmployerRegister = () => {
             </div>
           </div>
           <div>
-            <label htmlFor="number">Mobile Number</label>
+            <label htmlFor="contact">Mobile Number</label>
             <input
-              onChange={(e) => setNumber(e.target.value)}
-              value={number}
-              type="number"
-              id="number"
+              onChange={(e) => setContact(e.target.value)}
+              value={contact}
+              type="contact"
+              id="contact"
               placeholder="Enter Mobile Number"
               className="px-4 py-2 mb-5 rounded w-full border outline-1 outline-sky-200"
             />

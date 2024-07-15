@@ -13,6 +13,7 @@ import EmployerRoutes from "./routes/EmployerRoutes";
 const App = () => {
   return (
     <div>
+      <StudentRoutes />
       <EmployerRoutes />
     </div>
   );

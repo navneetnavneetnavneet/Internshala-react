@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { asyncStudentSignin } from "../../../store/actions/studentActions";
+import { asyncEmployerSignin } from "../../../store/actions/employerActions";
 
 const StudentLogin = () => {
   const { pathname } = useLocation();
@@ -23,12 +24,14 @@ const StudentLogin = () => {
 
       setEmail("");
       setPassword("");
-    } else {
-      let emaploy = {
+    } else if (pathname == "/employer/signin") {
+      let employe = {
         email,
         password,
       };
-      console.log({ emaploy });
+      dispatch(asyncEmployerSignin(employe));
+      setEmail("");
+      setPassword("");
     }
   };
 
