@@ -19,7 +19,7 @@ const EmployerRoutes = () => {
     dispatch(asyncIsLoggedInEmployer());
 
     isLoggedIn && navigate("/employer/profile");
-    !isLoggedIn && navigate(-1);
+    !isLoggedIn && navigate("/");
   }, [isLoggedIn]);
 
   return (

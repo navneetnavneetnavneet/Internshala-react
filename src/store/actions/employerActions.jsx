@@ -43,3 +43,23 @@ export const asyncEmployerSignin =
       console.log(error.response.data);
     }
   };
+
+
+export const asyncEmployerSignout = () => async (dispatch, getState) => {
+    try {
+       await axios.get("/employe/signout");
+       dispatch(removedEmployer()); 
+    } catch (error) {
+        console.log(error.response.data);
+    }
+}
+
+export const asyncEmployerDeleteAccount = () => async (dispatch, getState) => {
+    try {
+        const {data} = await axios.get("/employe/delete");
+        console.log(data);
+        dispatch(removedEmployer());
+    } catch (error) {
+        console.log(error.response.data);
+    }
+}

@@ -1,9 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { asyncEmployerDeleteAccount } from "../../../store/actions/employerActions";
 
 const EmployerDeleteAccount = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const deleteAccountHandler = () => {
+    dispatch(asyncEmployerDeleteAccount());
     navigate("/");
   };
 

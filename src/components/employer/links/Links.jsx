@@ -1,9 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { asyncEmployerSignout } from "../../../store/actions/employerActions";
 
 const Links = (props) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const logoutHandler = () => {
-    console.log("employer logout");
+    dispatch(asyncEmployerSignout());
+    navigate("/");
   };
 
   return (
