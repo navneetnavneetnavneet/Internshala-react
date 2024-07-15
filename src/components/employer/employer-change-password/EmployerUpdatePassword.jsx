@@ -1,11 +1,18 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { asyncEmployerChnagePassword } from "../../../store/actions/employerActions";
+import { useNavigate } from "react-router-dom";
 
 const EmployerUpdatePassword = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [password, setPassword] = useState("");
 
   const changePasswordHandler = (e) => {
     e.preventDefault();
-    console.log(password);
+    dispatch(asyncEmployerChnagePassword(password));
+    navigate("/employer/profile");
   };
 
   return (

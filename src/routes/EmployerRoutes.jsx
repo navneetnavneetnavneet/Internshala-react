@@ -13,7 +13,7 @@ const EmployerRoutes = () => {
   const dispatch = useDispatch();
 
   const { isLoggedIn } = useSelector((state) => state.employerReducer);
-  console.log(isLoggedIn);
+  // console.log(isLoggedIn);
 
   useEffect(() => {
     dispatch(asyncIsLoggedInEmployer());
