@@ -9,11 +9,11 @@ export const studentSlice = createSlice({
   name: "student",
   initialState,
   reducers: {
-    load: (state, actions) => {
-      state.student = actions.payload;
+    load: (state, action) => {
+      state.student = action.payload;
       state.isAuthenticated = true;
     },
-    remove: (state, actions) => {
+    remove: (state, action) => {
       state.student = null;
       state.isAuthenticated = false;
     },

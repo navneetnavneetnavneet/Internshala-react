@@ -36,12 +36,12 @@ const StudentRoutes = () => {
 
   const { isAuthenticated } = useSelector((state) => state.studentReducer);
 
-  useEffect(() => {
-    dispatch(asyncLoad());
+  // useEffect(() => {
+    // dispatch(asyncLoad());
 
-    isAuthenticated && navigate("/student/dashboard");
-    !isAuthenticated && navigate("/student/signin");
-  }, [isAuthenticated]);
+  //   isAuthenticated && navigate("/student/dashboard");
+  //   !isAuthenticated && navigate("/student/signin");
+  // }, [isAuthenticated]);
 
   return (
     <div className="w-full min-h-screen relative">

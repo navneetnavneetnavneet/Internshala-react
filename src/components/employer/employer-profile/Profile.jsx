@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-const PersonalDetails = () => {
+const Profile = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -96,6 +96,6 @@ const PersonalDetails = () => {
       </p>
     </div>
   );
-};
+}
 
-export default PersonalDetails;
+export default Profile

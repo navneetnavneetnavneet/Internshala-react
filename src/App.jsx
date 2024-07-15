@@ -6,13 +6,14 @@
 // import EmployerUpdatePassword from "./components/employ/employer-change-password/EmployerUpdatePassword";
 // import EmployerDeleteAccount from "./components/employ/employer-delete-account/EmployerDeleteAccount";
 
+import { Route, Routes } from "react-router-dom";
 import StudentRoutes from "./routes/StudentRoutes";
-
+import EmployerRoutes from "./routes/EmployerRoutes";
 
 const App = () => {
   return (
     <div>
-      <StudentRoutes />
+      <EmployerRoutes />
     </div>
   );
 };
