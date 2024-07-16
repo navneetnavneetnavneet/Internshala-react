@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { asyncAddJob } from "../../../store/actions/studentActions";
 
 const JobForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [designation, setDesignation] = useState("");
   const [profile, setProfile] = useState("");
@@ -28,7 +31,8 @@ const JobForm = () => {
       endDate,
       description,
     };
-    console.log(job);
+    dispatch(asyncAddJob(job));
+    navigate("/student/resume");
   };
 
   return (

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { asyncAddInternship } from "../../../store/actions/studentActions";
 
 const InternshipForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [profile, setProfile] = useState("");
   const [organization, setOrganization] = useState("");
@@ -26,7 +29,8 @@ const InternshipForm = () => {
       endDate,
       description,
     };
-    console.log(internship);
+    dispatch(asyncAddInternship(internship));
+    navigate("/student/resume");
   };
 
   return (

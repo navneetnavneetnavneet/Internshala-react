@@ -32,7 +32,10 @@ export const asyncStudentSignin =
   ({ email, password }) =>
   async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/user/student/signin", { email, password });
+      const { data } = await axios.post("/user/student/signin", {
+        email,
+        password,
+      });
       // console.log(data);
       dispatch(asyncLoad());
     } catch (error) {
@@ -78,7 +81,9 @@ export const asyncNewPassword =
 // Only for loggedIn Student
 export const asyncChangePassword = (password) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/user/student/reset-password/", { password });
+    const { data } = await axios.post("/user/student/reset-password/", {
+      password,
+    });
     console.log(data);
     // dispatch(asyncLoad());
   } catch (error) {
@@ -104,3 +109,43 @@ export const asyncStudentDelete = () => async (dispatch, getState) => {
     console.log(error.response.data);
   }
 };
+
+// job
+
+export const asyncAddJob =
+  ({
+    designation,
+    profile,
+    organization,
+    location,
+    startDate,
+    endDate,
+    description,
+  }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post("/resume/add-job", {
+        designation,
+        profile,
+        organization,
+        location,
+        startDate,
+        endDate,
+        description,
+      });
+      console.log(data);
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncDeleteJob = (id) => async (dispatch, getState) => {
+  try {
+    await axios.post(`resume/delete-job/${id}`);
+    dispatch(asyncLoad());
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
+
