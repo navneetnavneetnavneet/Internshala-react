@@ -28,7 +28,7 @@ const Accomplishment = (props) => {
                 <p className="text-zinc-600">{accomplishment.accomplishment}</p>
                 <div className="flex items-center gap-5">
                   <Link
-                    to={`/edit_accomplishment/${accomplishment.id}`}
+                    to={`/student/resume/edit_accomplishment/${accomplishment.id}`}
                   >
                     <i class="ri-pencil-line text-[1.4rem]"></i>
                   </Link>

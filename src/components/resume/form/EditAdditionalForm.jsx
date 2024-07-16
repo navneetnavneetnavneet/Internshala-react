@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { asyncEditAccomplishment } from "../../../store/actions/studentActions";
 
 const EditAdditionalForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { id } = useParams();
 
-  const [accomplishment, setAccomplishment] = useState("");
+  const { student } = useSelector((state) => state.studentReducer);
+
+  const accomp = student && student.resume.accomplishments.find((i) => i.id == id);
+
+  const [accomplishment, setAccomplishment] = useState(accomp.accomplishment);
 
   const closeFormHandler = () => {
     navigate(-1);
@@ -18,7 +24,7 @@ const EditAdditionalForm = () => {
     const additionalDetails = {
       accomplishment,
     };
-    dispatch();
+    dispatch(asyncEditAccomplishment(id, additionalDetails));
     navigate("/student/resume");
   };
 

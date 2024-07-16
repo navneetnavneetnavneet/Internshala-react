@@ -1,15 +1,21 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { asyncEditProject } from "../../../store/actions/studentActions";
 
 const EditProjectForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {id} = useParams();
 
-  const [title, setTitle] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [description, setDescription] = useState("");
+  const { student } = useSelector((state) => state.studentReducer);
+
+  const project = student && student.resume.projects.find((i) => i.id == id);
+
+  const [title, setTitle] = useState(project.title);
+  const [startDate, setStartDate] = useState(project.startDate);
+  const [endDate, setEndDate] = useState(project.endDate);
+  const [description, setDescription] = useState(project.description);
 
   const closeFormHandler = () => {
     navigate(-1);
@@ -24,7 +30,7 @@ const EditProjectForm = () => {
       endDate,
       description,
     };
-    dispatch();
+    dispatch(asyncEditProject(id, project));
     navigate("/student/resume");
   };
 

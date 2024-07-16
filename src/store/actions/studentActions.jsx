@@ -218,17 +218,7 @@ export const asyncAddInternship =
   };
 
 export const asyncEditInternship =
-  (
-    id,
-    {
-      profile,
-      organization,
-      location,
-      startDate,
-      endDate,
-      description,
-    }
-  ) =>
+  (id, { profile, organization, location, startDate, endDate, description }) =>
   async (dispatch, getState) => {
     try {
       const { data } = await axios.post(`/resume/edit-internship/${id}`, {
@@ -308,6 +298,24 @@ export const asyncAddCourse =
     }
   };
 
+export const asyncEditCourse =
+  (id, { program, organization, location, startDate, endDate, description }) =>
+  async (dispatch, getState) => {
+    try {
+      const data = await axios.post(`/resume/edit-course/${id}`, {
+        program,
+        organization,
+        location,
+        startDate,
+        endDate,
+        description,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
 export const asyncDeleteCourse = (id) => async (dispatch, getState) => {
   try {
     await axios.post(`/resume/delete-course/${id}`);
@@ -333,6 +341,22 @@ export const asyncAddProject =
     }
   };
 
+export const asyncEditProject =
+  (id, { title, startDate, endDate, description }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post(`/resume/edit-project/${id}`, {
+        title,
+        startDate,
+        endDate,
+        description,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
 export const asyncDeleteProject = (id) => async (dispatch, getState) => {
   try {
     await axios.post(`/resume/delete-project/${id}`);
@@ -347,6 +371,19 @@ export const asyncAddAccomplishment =
   async (dispatch, getState) => {
     try {
       const { data } = await axios.post("/resume/add-accomplishment", {
+        accomplishment,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncEditAccomplishment =
+  (id, { accomplishment }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post(`/resume/edit-accomplishment/${id}`, {
         accomplishment,
       });
       dispatch(asyncLoad());

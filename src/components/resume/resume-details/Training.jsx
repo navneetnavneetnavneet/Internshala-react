@@ -37,7 +37,7 @@ const Training = (props) => {
                     <p className="text-zinc-600">{course.description}</p>
                   </div>
                   <div className="flex items-center gap-5">
-                    <Link to={`/edit_training/${course.id}`}>
+                    <Link to={`/student/resume/edit_training/${course.id}`}>
                       <i class="ri-pencil-line text-[1.4rem]"></i>
                     </Link>
                     <i

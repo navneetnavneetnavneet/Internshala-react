@@ -33,7 +33,7 @@ const Project = (props) => {
                   <p className="text-zinc-600">{project.description}</p>
                 </div>
                 <div className="flex items-center gap-5">
-                  <Link to={`/edit_project/${project.id}`}>
+                  <Link to={`/student/resume/edit_project/${project.id}`}>
                     <i class="ri-pencil-line text-[1.4rem]"></i>
                   </Link>
                   <i

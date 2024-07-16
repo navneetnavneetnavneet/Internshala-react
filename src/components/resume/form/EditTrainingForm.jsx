@@ -1,17 +1,23 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { asyncEditCourse } from "../../../store/actions/studentActions";
 
 const EditTrainingForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { id } = useParams();
 
-  const [program, setProgram] = useState("");
-  const [organization, setOrganization] = useState("");
-  const [location, setLocation] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [description, setDescription] = useState("");
+  const { student } = useSelector((state) => state.studentReducer);
+
+  const course = student && student.resume.courses.find((i) => i.id == id);
+
+  const [program, setProgram] = useState(course.program);
+  const [organization, setOrganization] = useState(course.organization);
+  const [location, setLocation] = useState(course.location);
+  const [startDate, setStartDate] = useState(course.startDate);
+  const [endDate, setEndDate] = useState(course.endDate);
+  const [description, setDescription] = useState(course.description);
 
   const closeFormHandler = () => {
     navigate(-1);
@@ -28,7 +34,7 @@ const EditTrainingForm = () => {
       endDate,
       description,
     };
-    dispatch();
+    dispatch(asyncEditCourse(id, training));
     navigate("/student/resume");
   };
 
