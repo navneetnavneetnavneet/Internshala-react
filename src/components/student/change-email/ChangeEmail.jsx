@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { asyncChangeEmail } from "../../../store/actions/studentActions";
 
@@ -7,6 +7,8 @@ const ChangeEmail = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
+
+  const {student} = useSelector((state) => state.studentReducer);
 
   const chnageEmailHandler = (e) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ const ChangeEmail = () => {
       </h1>
       <p className="text-zinc-600 w-1/4 mt-5">
         Note: Please note that all the data associated with your account (
-        <span className="font-semibold">example@gmail.com</span>) will be linked
+        <span className="font-semibold">{student.email}</span>) will be linked
         to your new email address after this change. Also, ensure that you have
         access to both the email accounts for making the change.
       </p>

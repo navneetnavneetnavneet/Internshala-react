@@ -15,8 +15,8 @@ const Links = (props) => {
     <div
       className={`w-[15%] py-5 bg-white shadow absolute top-20 right-40 ${props.hiddenDiv}`}
     >
-      <h1 className="px-4 text-xl font-medium">John Deo</h1>
-      <h3 className="px-4 font-semibold">example@gmail.com</h3>
+      <h1 className="px-4 text-xl font-medium">{props.fullName}</h1>
+      <h3 className="px-4 font-semibold text-xs">{props.email}</h3>
       <div className="hover:text-[#00A5EC] w-full mt-5 font-medium flex items-center justify-between border-t border-b border-zinc-200 py-1">
         <div className="flex items-center gap-1 px-4">
           <i className="ri-star-s-fill text-yellow-400"></i>

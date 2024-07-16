@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Links from "../links/Links";
 
 const NavRight = (props) => {
+
   const fullName = Array.of(props.employer.firstName, props.employer.lastName).join(" ");
 
   const [hiddenDiv, setHiddenDiv] = useState("hidden");
@@ -16,11 +17,11 @@ const NavRight = (props) => {
 
   return (
     <div className="flex items-center gap-10">
-      <Link className="hover:text-[#00A5EC] font-semibold">
+      <Link to="/employer/profile" className="hover:text-[#00A5EC] font-semibold">
         Plans and Pricing
       </Link>
-      <Link className="hover:text-[#00A5EC] font-semibold">Dashboard</Link>
-      <Link className="hover:text-[#00A5EC] font-semibold">
+      <Link to="/employer/profile" className="hover:text-[#00A5EC] font-semibold">Dashboard</Link>
+      <Link to="/employer/profile" className="hover:text-[#00A5EC] font-semibold">
         Post Internship/Job
       </Link>
       <i className="hover:text-[#00A5EC] ri-message-2-line"></i>

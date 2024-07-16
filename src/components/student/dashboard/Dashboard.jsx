@@ -1,13 +1,19 @@
 import React from "react";
 import StudentDetails from "./StudentDetails";
-import Nav from "./Nav";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
+  const { student } = useSelector((state) => state.studentReducer);
+
   return (
-    <div className="w-full min-h-screen">
-      <StudentDetails />
-    </div>
+    student && (
+      <div className="w-full min-h-screen">
+        <StudentDetails
+          firstName={student.firstName}
+          lastName={student.lastName}
+        />
+      </div>
+    )
   );
 };
 

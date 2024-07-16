@@ -3,14 +3,15 @@ import NavLeft from "./NavLeft";
 import NavRight from "./NavRight";
 
 const Navbar = () => {
-
-  const {employer} = useSelector((state) => state.employerReducer);
+  const { employer } = useSelector((state) => state.employerReducer);
 
   return (
-    <div className="w-full px-[10%] flex items-center justify-between shadow">
-      <NavLeft />
-      <NavRight employer={employer} />
-    </div>
+    employer && (
+      <div className="w-full px-[10%] flex items-center justify-between shadow">
+        <NavLeft />
+        <NavRight employer={employer} />
+      </div>
+    )
   );
 };
 

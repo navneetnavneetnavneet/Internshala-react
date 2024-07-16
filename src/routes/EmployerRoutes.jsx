@@ -15,12 +15,12 @@ const EmployerRoutes = () => {
   const { isLoggedIn } = useSelector((state) => state.employerReducer);
   // console.log(isLoggedIn);
 
-  useEffect(() => {
-    dispatch(asyncIsLoggedInEmployer());
+  // useEffect(() => {
+  //   dispatch(asyncIsLoggedInEmployer());
 
-    isLoggedIn && navigate("/employer/profile");
-    !isLoggedIn && navigate("/");
-  }, [isLoggedIn]);
+  //   isLoggedIn && navigate("/employer/profile");
+  //   !isLoggedIn && navigate("/");
+  // }, [isLoggedIn]);
 
   return (
     <div className="w-full min-h-screen relative">
