@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { asyncEmployerEditProfile } from '../../../store/actions/employerActions';
 
 const Profile = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [designation, setDesignation] = useState("");
+  const dispatch = useDispatch();
+
+  const {employer} = useSelector((state) => state.employerReducer);
+
+  const [firstName, setFirstName] = useState(employer.firstName);
+  const [lastName, setLastName] = useState(employer.lastName);
+  const [email, setEmail] = useState(employer.email);
+  const [contact, setContact] = useState(employer.contact);
+  const [designation, setDesignation] = useState(employer.designation || "");
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -14,10 +20,11 @@ const Profile = () => {
       firstName,
       lastName,
       email,
-      number,
+      contact,
       designation,
     };
-    console.log(details);
+    dispatch(asyncEmployerEditProfile(details));
+    
   };
 
   return (
@@ -76,12 +83,12 @@ const Profile = () => {
           />
         </div>
         <div>
-          <label htmlFor="number">Mobile number</label>
+          <label htmlFor="contact">Mobile contact</label>
           <input
-            onChange={(e) => setNumber(e.target.value)}
-            value={number}
-            type="number"
-            id="number"
+            onChange={(e) => setContact(e.target.value)}
+            value={contact}
+            type="contact"
+            id="contact"
             placeholder="Mobile Number"
             className="px-4 py-2 mb-5 rounded w-full border outline-1 outline-sky-200"
           />
@@ -91,7 +98,7 @@ const Profile = () => {
         </button>
       </form>
       <p className="mt-20">
-        Need help? Call us at +91 8448444852, available from Mon to Fri, 10 AM -
+        Need help? Call us at <span className='text-[#00A5EC] font-semibold'>+91 8448444852</span>, available from Mon to Fri, 10 AM -
         6 PM.
       </p>
     </div>

@@ -1,11 +1,15 @@
+import { useSelector } from "react-redux";
 import NavLeft from "./NavLeft";
 import NavRight from "./NavRight";
 
 const Navbar = () => {
+
+  const {employer} = useSelector((state) => state.employerReducer);
+
   return (
     <div className="w-full px-[10%] flex items-center justify-between shadow">
       <NavLeft />
-      <NavRight />
+      <NavRight employer={employer} />
     </div>
   );
 };

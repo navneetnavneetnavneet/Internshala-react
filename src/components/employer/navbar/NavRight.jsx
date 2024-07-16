@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Links from "../links/Links";
 
-const NavRight = () => {
+const NavRight = (props) => {
+  const fullName = Array.of(props.employer.firstName, props.employer.lastName).join(" ");
+
   const [hiddenDiv, setHiddenDiv] = useState("hidden");
   const mouseEnter = () => {
     setHiddenDiv("initial");
@@ -28,11 +30,11 @@ const NavRight = () => {
         className="hoverdiv hover:border-[#00A5EC] hover:text-[#00A5EC] flex items-center gap-1"
       >
         <h1 className="w-10 h-10 border border-zinc-600 rounded-full flex items-center justify-center">
-          N
+          {fullName.charAt(0).toUpperCase()}
         </h1>
         <i className="ri-arrow-down-s-fill"></i>
       </div>
-      <Links hiddenDiv={hiddenDiv} />
+      <Links hiddenDiv={hiddenDiv} fullName={fullName} email={props.employer.email} />
     </div>
   );
 };
