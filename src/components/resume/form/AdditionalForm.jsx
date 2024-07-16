@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { asyncAddAccomplishment } from "../../../store/actions/studentActions";
 
 const AdditionalForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [accomplishment, setAccomplishment] = useState("");
 
@@ -16,7 +19,8 @@ const AdditionalForm = () => {
     const additionalDetails = {
       accomplishment,
     };
-    console.log(additionalDetails);
+    dispatch(asyncAddAccomplishment(additionalDetails));
+    navigate("/student/resume");
   };
 
   return (

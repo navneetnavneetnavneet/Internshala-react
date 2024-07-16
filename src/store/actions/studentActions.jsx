@@ -242,10 +242,31 @@ export const asyncAddProject =
     }
   };
 
+export const asyncDeleteProject = (id) => async (dispatch, getState) => {
+  try {
+    await axios.post(`/resume/delete-project/${id}`);
+    dispatch(asyncLoad());
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
 
-  export const asyncDeleteProject = (id) => async (dispatch, getState) => {
+export const asyncAddAccomplishment =
+  ({ accomplishment }) =>
+  async (dispatch, getState) => {
     try {
-      await axios.post(`/resume/delete-project/${id}`);
+      const { data } = await axios.post("/resume/add-accomplishment", {
+        accomplishment,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+  export const asyncDeleteAccomplishment = (id) => async (dispatch, getState) => {
+    try {
+      await axios.post(`/resume/delete-accomplishment/${id}`);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);

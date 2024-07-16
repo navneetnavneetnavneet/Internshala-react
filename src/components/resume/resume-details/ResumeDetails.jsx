@@ -23,7 +23,7 @@ const ResumeDetails = (props) => {
         <Training courses={props.student.resume.courses} />
         <Project projects={props.student.resume.projects} />
         <Portfolio />
-        <Accomplishment />
+        <Accomplishment accomplishments={props.student.resume.accomplishments} />
       </div>
     </div>
   );

@@ -1,7 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { asyncDeleteAccomplishment } from "../../../store/actions/studentActions";
 
-const Accomplishment = () => {
+const Accomplishment = (props) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const deleteAccomplishmentHandler = (id) => {
+    dispatch(asyncDeleteAccomplishment(id));
+    navigate("/student/resume");
+  };
+
   return (
     <div className="w-full py-5 text-zinc-600 flex items-start justify-between">
       <h4 className="uppercase w-[15%] text-xs font-semibold">
@@ -9,15 +19,24 @@ const Accomplishment = () => {
       </h4>
       <div className="w-[75%]">
         <div>
-          <div className="w-full flex justify-between">
-            <h4 className="font-semibold">something</h4>
-            <div className="flex items-center gap-5">
-              <i class="ri-pencil-line text-[1.4rem]"></i>
-              <i class="ri-delete-bin-line text-[1.4rem]"></i>
-            </div>
-          </div>
-          <p></p>
-          <p></p>
+          {props.accomplishments &&
+            props.accomplishments.map((accomplishment) => (
+              <div
+                key={accomplishment.id}
+                className="w-full mb-5 flex justify-between items-start"
+              >
+                <p className="text-zinc-600">{accomplishment.accomplishment}</p>
+                <div className="flex items-center gap-5">
+                  <i class="ri-pencil-line text-[1.4rem]"></i>
+                  <i
+                    onClick={() =>
+                      deleteAccomplishmentHandler(accomplishment.id)
+                    }
+                    class="ri-delete-bin-line text-[1.4rem]"
+                  ></i>
+                </div>
+              </div>
+            ))}
         </div>
         <Link
           to="/student/resume/accomplishment"
