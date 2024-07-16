@@ -149,3 +149,30 @@ export const asyncDeleteJob = (id) => async (dispatch, getState) => {
   }
 };
 
+export const asyncAddInternship =
+  ({ profile, organization, location, startDate, endDate, description }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post("/resume/add-internship", {
+        profile,
+        organization,
+        location,
+        startDate,
+        endDate,
+        description,
+      });
+      console.log(data);
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+  export const asyncDeleteInternship = (id) => async (dispatch, getState) => {
+    try {
+      await axios.post(`resume/delete-internship/${id}`);
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
