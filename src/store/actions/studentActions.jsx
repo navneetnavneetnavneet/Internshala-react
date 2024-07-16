@@ -217,9 +217,35 @@ export const asyncAddCourse =
     }
   };
 
-  export const asyncDeleteCourse = (id) => async (dispatch, getState) => {
+export const asyncDeleteCourse = (id) => async (dispatch, getState) => {
+  try {
+    await axios.post(`/resume/delete-course/${id}`);
+    dispatch(asyncLoad());
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
+
+export const asyncAddProject =
+  ({ title, startDate, endDate, description }) =>
+  async (dispatch, getState) => {
     try {
-      await axios.post(`/resume/delete-course/${id}`);
+      const { data } = await axios.post("/resume/add-project", {
+        title,
+        startDate,
+        endDate,
+        description,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+
+  export const asyncDeleteProject = (id) => async (dispatch, getState) => {
+    try {
+      await axios.post(`/resume/delete-project/${id}`);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);

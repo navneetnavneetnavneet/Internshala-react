@@ -1,7 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { asyncDeleteProject } from "../../../store/actions/studentActions";
 
-const Project = () => {
+const Project = (props) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const deleteProjectHandler = (id) => {
+    dispatch(asyncDeleteProject(id));
+    navigate("/student/resume");
+  };
+
   return (
     <div className="w-full border-b py-5 text-zinc-600 flex items-start justify-between">
       <h4 className="uppercase w-[15%] text-xs font-semibold">
@@ -9,15 +19,28 @@ const Project = () => {
       </h4>
       <div className="w-[75%]">
         <div>
-          <div className="w-full flex justify-between">
-            <h4 className="font-semibold">something</h4>
-            <div className="flex items-center gap-5">
-              <i class="ri-pencil-line text-[1.4rem]"></i>
-              <i class="ri-delete-bin-line text-[1.4rem]"></i>
-            </div>
-          </div>
-          <p></p>
-          <p></p>
+          {props.projects &&
+            props.projects.map((project) => (
+              <div
+                key={project.id}
+                className="w-full flex justify-between items-start"
+              >
+                <div>
+                  <h4 className="font-semibold">{project.title}</h4>
+                  <p className="text-zinc-600">
+                    {project.startDate} - {project.endDate}
+                  </p>
+                  <p className="text-zinc-600">{project.description}</p>
+                </div>
+                <div className="flex items-center gap-5">
+                  <i class="ri-pencil-line text-[1.4rem]"></i>
+                  <i
+                    onClick={() => deleteProjectHandler(project.id)}
+                    class="ri-delete-bin-line text-[1.4rem]"
+                  ></i>
+                </div>
+              </div>
+            ))}
         </div>
         <Link
           to="/student/resume/project"
