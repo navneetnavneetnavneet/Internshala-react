@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { asyncAddInternship } from "../../../store/actions/studentActions";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { asyncEditInternship } from "../../../store/actions/studentActions";
 
-const InternshipForm = () => {
+const EditInternshipForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { id } = useParams();
 
-  const [profile, setProfile] = useState("");
-  const [organization, setOrganization] = useState("");
-  const [location, setLocation] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [description, setDescription] = useState("");
+  const { student } = useSelector((state) => state.studentReducer);
+
+  const internship = student && student.resume.internships.find((i) => i.id == id);
+
+  const [profile, setProfile] = useState(internship.profile);
+  const [organization, setOrganization] = useState(internship.organization);
+  const [location, setLocation] = useState(internship.location);
+  const [startDate, setStartDate] = useState(internship.startDate);
+  const [endDate, setEndDate] = useState(internship.endDate);
+  const [description, setDescription] = useState(internship.description);
 
   const closeFormHandler = () => {
     navigate(-1);
@@ -29,7 +34,7 @@ const InternshipForm = () => {
       endDate,
       description,
     };
-    dispatch(asyncAddInternship(internship));
+    dispatch(asyncEditInternship(id, internship));
     navigate("/student/resume");
   };
 
@@ -125,11 +130,11 @@ const InternshipForm = () => {
           ></textarea>
         </div>
         <button className="px-4 py-2 rounded bg-[#00A5EC] hover:bg-[#0d95cf] text-white/90 font-semibold">
-          Save
+          Update
         </button>
       </form>
     </div>
   );
 };
 
-export default InternshipForm;
+export default EditInternshipForm;

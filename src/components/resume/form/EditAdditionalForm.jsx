@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { asyncAddAccomplishment } from "../../../store/actions/studentActions";
 
-const AdditionalForm = () => {
+const EditAdditionalForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -19,7 +18,7 @@ const AdditionalForm = () => {
     const additionalDetails = {
       accomplishment,
     };
-    dispatch(asyncAddAccomplishment(additionalDetails));
+    dispatch();
     navigate("/student/resume");
   };
 
@@ -58,4 +57,4 @@ const AdditionalForm = () => {
   );
 };
 
-export default AdditionalForm;
+export default EditAdditionalForm;

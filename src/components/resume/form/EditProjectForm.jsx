@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { asyncAddInternship } from "../../../store/actions/studentActions";
 
-const InternshipForm = () => {
+const EditProjectForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [profile, setProfile] = useState("");
-  const [organization, setOrganization] = useState("");
-  const [location, setLocation] = useState("");
+  const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [description, setDescription] = useState("");
@@ -18,18 +15,16 @@ const InternshipForm = () => {
     navigate(-1);
   };
 
-  const submitInternshipFormHandler = (e) => {
+  const submitProjectFormHandler = (e) => {
     e.preventDefault();
 
-    const internship = {
-      profile,
-      organization,
-      location,
+    const project = {
+      title,
       startDate,
       endDate,
       description,
     };
-    dispatch(asyncAddInternship(internship));
+    dispatch();
     navigate("/student/resume");
   };
 
@@ -39,47 +34,21 @@ const InternshipForm = () => {
         onClick={closeFormHandler}
         className="ri-close-line text-[1.4rem] text-end block"
       ></i>
-      <h1 className="text-xl font-semibold text-center">Internship details</h1>
+      <h1 className="text-xl font-semibold text-center">Project details</h1>
       <form
-        onSubmit={submitInternshipFormHandler}
+        onSubmit={submitProjectFormHandler}
         className="w-full mt-5 flex flex-col gap-5"
       >
         <div>
-          <label htmlFor="profile" className="font-semibold">
-            Profile
+          <label htmlFor="title" className="font-semibold">
+            Title
           </label>
           <input
-            onChange={(e) => setProfile(e.target.value)}
-            value={profile}
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
             type="text"
-            id="profile"
-            placeholder="e.g. Operations"
-            className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
-          />
-        </div>
-        <div>
-          <label htmlFor="organization" className="font-semibold">
-            Organization
-          </label>
-          <input
-            onChange={(e) => setOrganization(e.target.value)}
-            value={organization}
-            type="text"
-            id="organization"
-            placeholder="e.g. Internshala"
-            className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
-          />
-        </div>
-        <div>
-          <label htmlFor="location" className="font-semibold">
-            Location
-          </label>
-          <input
-            onChange={(e) => setLocation(e.target.value)}
-            value={location}
-            type="text"
-            id="location"
-            placeholder="e.g. Mumbai"
+            id="title"
+            placeholder="e.g. Optical Character Recognition"
             className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
           />
         </div>
@@ -107,7 +76,7 @@ const InternshipForm = () => {
               type="date"
               id="end"
               placeholder="Choose date"
-              className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
+              className="w-full px-4 py-2 mt-1 outline-1 outline-sky-200 border rounded"
             />
           </div>
         </div>
@@ -120,7 +89,7 @@ const InternshipForm = () => {
             value={description}
             type="text"
             id="description"
-            placeholder="Short description of work done (max 250 char)"
+            placeholder="Short description about project (max 1000 char)"
             className="w-full h-[20vh] resize-none px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
           ></textarea>
         </div>
@@ -132,4 +101,4 @@ const InternshipForm = () => {
   );
 };
 
-export default InternshipForm;
+export default EditProjectForm;

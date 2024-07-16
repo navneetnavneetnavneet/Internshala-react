@@ -37,7 +37,9 @@ const Training = (props) => {
                     <p className="text-zinc-600">{course.description}</p>
                   </div>
                   <div className="flex items-center gap-5">
-                    <i class="ri-pencil-line text-[1.4rem]"></i>
+                    <Link to={`/edit_training/${course.id}`}>
+                      <i class="ri-pencil-line text-[1.4rem]"></i>
+                    </Link>
                     <i
                       onClick={() => courseDeleteHandler(course.id)}
                       class="ri-delete-bin-line text-[1.4rem]"

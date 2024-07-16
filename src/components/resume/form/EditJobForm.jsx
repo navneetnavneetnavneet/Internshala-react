@@ -1,27 +1,34 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { asyncAddInternship } from "../../../store/actions/studentActions";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { asyncEditJob } from "../../../store/actions/studentActions";
 
-const InternshipForm = () => {
+const EditJobForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { id } = useParams();
 
-  const [profile, setProfile] = useState("");
-  const [organization, setOrganization] = useState("");
-  const [location, setLocation] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [description, setDescription] = useState("");
+  const { student } = useSelector((state) => state.studentReducer);
+
+  const job = student && student.resume.jobs.find((i) => i.id == id);
+
+  const [designation, setDesignation] = useState(job.designation);
+  const [profile, setProfile] = useState(job.profile);
+  const [organization, setOrganization] = useState(job.organization);
+  const [location, setLocation] = useState(job.location);
+  const [startDate, setStartDate] = useState(job.startDate);
+  const [endDate, setEndDate] = useState(job.endDate);
+  const [description, setDescription] = useState(job.description);
 
   const closeFormHandler = () => {
     navigate(-1);
   };
 
-  const submitInternshipFormHandler = (e) => {
+  const submitJobFormHandler = (e) => {
     e.preventDefault();
 
-    const internship = {
+    const editjob = {
+      designation,
       profile,
       organization,
       location,
@@ -29,7 +36,7 @@ const InternshipForm = () => {
       endDate,
       description,
     };
-    dispatch(asyncAddInternship(internship));
+    dispatch(asyncEditJob(id, editjob));
     navigate("/student/resume");
   };
 
@@ -39,11 +46,24 @@ const InternshipForm = () => {
         onClick={closeFormHandler}
         className="ri-close-line text-[1.4rem] text-end block"
       ></i>
-      <h1 className="text-xl font-semibold text-center">Internship details</h1>
+      <h1 className="text-xl font-semibold text-center">Job details</h1>
       <form
-        onSubmit={submitInternshipFormHandler}
+        onSubmit={submitJobFormHandler}
         className="w-full mt-5 flex flex-col gap-5"
       >
+        <div>
+          <label htmlFor="designation" className="font-semibold">
+            Designation
+          </label>
+          <input
+            onChange={(e) => setDesignation(e.target.value)}
+            value={designation}
+            type="text"
+            id="designation"
+            placeholder="e.g. Software Engineer"
+            className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
+          />
+        </div>
         <div>
           <label htmlFor="profile" className="font-semibold">
             Profile
@@ -125,11 +145,11 @@ const InternshipForm = () => {
           ></textarea>
         </div>
         <button className="px-4 py-2 rounded bg-[#00A5EC] hover:bg-[#0d95cf] text-white/90 font-semibold">
-          Save
+          Update
         </button>
       </form>
     </div>
   );
 };
 
-export default InternshipForm;
+export default EditJobForm;

@@ -37,7 +37,7 @@ const TrainingForm = () => {
     <div className="w-1/2 rounded-lg text-zinc-600 border mx-auto my-10 px-10 py-5">
       <i
         onClick={closeFormHandler}
-        class="ri-close-line text-[1.4rem] text-end block"
+        className="ri-close-line text-[1.4rem] text-end block"
       ></i>
       <h1 className="text-xl font-semibold text-center">Training details</h1>
       <form

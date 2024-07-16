@@ -16,8 +16,6 @@ const Portfolio = () => {
               <i class="ri-delete-bin-line text-[1.4rem]"></i>
             </div>
           </div>
-          <p></p>
-          <p></p>
         </div>
         <Link className="text-[#00A5EC] mt-2 flex items-center gap-1">
           <i class="ri-add-line text-[1.4rem]"></i> Add portfolio/ work sample

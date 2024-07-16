@@ -26,6 +26,14 @@ import ProjectForm from "../components/resume/form/ProjectForm";
 import AdditionalForm from "../components/resume/form/AdditionalForm";
 import ResponsibilityForm from "../components/resume/form/ResponsibilityForm";
 import PersonalDetailsForm from "../components/resume/form/PersonalDetailsForm";
+
+import EditJobForm from "../components/resume/form/EditJobForm";
+import EditInternshipForm from "../components/resume/form/EditInternshipForm";
+import EditProjectForm from "../components/resume/form/EditProjectForm";
+import EditTrainingForm from "../components/resume/form/EditTrainingForm";
+import EditAdditionalForm from "../components/resume/form/EditAdditionalForm";
+import EditResponsibilityForm from "../components/resume/form/EditResponsibilityForm";
+
 import { useDispatch, useSelector } from "react-redux";
 import { asyncLoad } from "../store/actions/studentActions";
 
@@ -94,6 +102,12 @@ const StudentRoutes = () => {
           path="/student/resume/personal_details"
           element={<PersonalDetailsForm />}
         />
+        <Route path="/student/resume/edit_job/:id" element={<EditJobForm />} />
+        <Route path="/student/resume/edit_internship/:id" element={<EditInternshipForm />} />
+        <Route path="/student/resume/edit_training/:id" element={<EditTrainingForm />} />
+        <Route path="/student/resume/edit_project/:id" element={<EditProjectForm />} />
+        <Route path="/student/resume/edit_accomplishment/:id" element={<EditAdditionalForm />} />
+        <Route path="/student/resume/edit_responsibility/:id" element={<EditResponsibilityForm />} />
       </Routes>
 
       {pathname == "/student/signup" ||

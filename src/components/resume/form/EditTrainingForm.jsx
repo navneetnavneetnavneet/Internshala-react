@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { asyncAddInternship } from "../../../store/actions/studentActions";
 
-const InternshipForm = () => {
+const EditTrainingForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [profile, setProfile] = useState("");
+  const [program, setProgram] = useState("");
   const [organization, setOrganization] = useState("");
   const [location, setLocation] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -18,18 +17,18 @@ const InternshipForm = () => {
     navigate(-1);
   };
 
-  const submitInternshipFormHandler = (e) => {
+  const submitTrainingFormHandler = (e) => {
     e.preventDefault();
 
-    const internship = {
-      profile,
+    const training = {
+      program,
       organization,
       location,
       startDate,
       endDate,
       description,
     };
-    dispatch(asyncAddInternship(internship));
+    dispatch();
     navigate("/student/resume");
   };
 
@@ -39,20 +38,20 @@ const InternshipForm = () => {
         onClick={closeFormHandler}
         className="ri-close-line text-[1.4rem] text-end block"
       ></i>
-      <h1 className="text-xl font-semibold text-center">Internship details</h1>
+      <h1 className="text-xl font-semibold text-center">Training details</h1>
       <form
-        onSubmit={submitInternshipFormHandler}
+        onSubmit={submitTrainingFormHandler}
         className="w-full mt-5 flex flex-col gap-5"
       >
         <div>
-          <label htmlFor="profile" className="font-semibold">
-            Profile
+          <label htmlFor="program" className="font-semibold">
+            Training program
           </label>
           <input
-            onChange={(e) => setProfile(e.target.value)}
-            value={profile}
+            onChange={(e) => setProgram(e.target.value)}
+            value={program}
             type="text"
-            id="profile"
+            id="program"
             placeholder="e.g. Operations"
             className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
           />
@@ -66,7 +65,7 @@ const InternshipForm = () => {
             value={organization}
             type="text"
             id="organization"
-            placeholder="e.g. Internshala"
+            placeholder="e.g. Internshala Training"
             className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
           />
         </div>
@@ -107,7 +106,7 @@ const InternshipForm = () => {
               type="date"
               id="end"
               placeholder="Choose date"
-              className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
+              className="w-full px-4 py-2 mt-1 outline-1 outline-sky-200 border rounded"
             />
           </div>
         </div>
@@ -120,7 +119,7 @@ const InternshipForm = () => {
             value={description}
             type="text"
             id="description"
-            placeholder="Short description of work done (max 250 char)"
+            placeholder="Short description about training (max 700 char)"
             className="w-full h-[20vh] resize-none px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
           ></textarea>
         </div>
@@ -132,4 +131,4 @@ const InternshipForm = () => {
   );
 };
 
-export default InternshipForm;
+export default EditTrainingForm;

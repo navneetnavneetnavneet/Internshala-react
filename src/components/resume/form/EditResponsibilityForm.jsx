@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { asyncAddResponsibilty } from "../../../store/actions/studentActions";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { asyncEditResponsibilty } from "../../../store/actions/studentActions";
 
-const ResponsibilityForm = () => {
+const EditResponsibilityForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {id} = useParams();
 
-  const [description, setDescription] = useState("");
+  const {student} = useSelector((state) => state.studentReducer);
+  const responsibility = student && student.resume.responsibilities.find((i) => i.id == id);
+
+  const [description, setDescription] = useState(responsibility.description);
 
   const closeFormHandler = () => {
     navigate(-1);
@@ -19,7 +23,7 @@ const ResponsibilityForm = () => {
     const responsibility = {
       description,
     };
-    dispatch(asyncAddResponsibilty(responsibility));
+    dispatch(asyncEditResponsibilty(id, responsibility));
     navigate("/student/resume");
   };
 
@@ -54,11 +58,11 @@ const ResponsibilityForm = () => {
           ></textarea>
         </div>
         <button className="px-4 py-2 rounded bg-[#00A5EC] hover:bg-[#0d95cf] text-white/90 font-semibold">
-          Save
+          Update
         </button>
       </form>
     </div>
   );
 };
 
-export default ResponsibilityForm;
+export default EditResponsibilityForm;

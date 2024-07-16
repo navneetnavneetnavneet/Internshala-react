@@ -1,24 +1,21 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { asyncStudentUpdate } from "../../../store/actions/studentActions";
 
 const PersonalDetailsForm = () => {
   const navigate = useNavigate();
-  const props = {
-    firstName: "John",
-    lastName: "Deo",
-    email: "example@gmail.com",
-    number: 12456789,
-    city: "bhopal",
-    gender: "Male",
-  };
+  const dispatch = useDispatch();
 
-  const [firstName, setFirstName] = useState(props.firstName);
-  const [lastName, setLastName] = useState(props.lastName);
+  const { student } = useSelector((state) => state.studentReducer);
+
+  const [firstName, setFirstName] = useState(student.firstName);
+  const [lastName, setLastName] = useState(student.lastName);
   const [profileImage, setProfileImage] = useState("");
-  const [email, setEamil] = useState(props.email);
-  const [number, setNumber] = useState(props.number);
-  const [city, setCity] = useState(props.city);
-  const [gender, setGender] = useState(props.gender);
+  const [email, setEamil] = useState(student.email);
+  const [contact, setContact] = useState(student.contact);
+  const [city, setCity] = useState(student.city);
+  const [gender, setGender] = useState(student.gender);
 
   const closeFormHandler = () => {
     navigate(-1);
@@ -32,11 +29,12 @@ const PersonalDetailsForm = () => {
       lastName,
       profileImage,
       email,
-      number,
+      contact,
       city,
       gender,
     };
-    console.log(updatedStudent);
+    dispatch(asyncStudentUpdate(updatedStudent));
+    navigate("/student/resume");
   };
 
   return (
@@ -78,17 +76,20 @@ const PersonalDetailsForm = () => {
             />
           </div>
         </div>
-        <div >
+        <div>
           <label htmlFor="profileImage" className="font-semibold">
             Profile picture <span className="opacity-50">(Recommended)</span>
           </label>
           <input
-          onChange={(e) => setProfileImage(e.target.files[0])}
+            onChange={(e) => setProfileImage(e.target.files[0])}
             type="file"
             id="profileImage"
             className="w-1/2 px-4 py-2 bg-[#EAFCFF] block mt-1 outline-1 outline-sky-200 border rounded"
           />
-          <p className="text-xs font-semibold opacity-50 mt-1 tracking-wide">Upload a professional picture of yourself (Max file size: 1Mb and max resolution: 500px x 500px. File type - jpeg, jpg, png, gif)</p>
+          <p className="text-xs font-semibold opacity-50 mt-1 tracking-wide">
+            Upload a professional picture of yourself (Max file size: 1Mb and
+            max resolution: 500px x 500px. File type - jpeg, jpg, png, gif)
+          </p>
         </div>
         <div>
           <label htmlFor="email" className="font-semibold">
@@ -112,12 +113,12 @@ const PersonalDetailsForm = () => {
         </div>
         <div>
           <label htmlFor="contact" className="font-semibold">
-            Contact number
+            Contact contact
           </label>
           <input
-            onChange={(e) => setNumber(e.target.value)}
-            value={number}
-            type="number"
+            onChange={(e) => setContact(e.target.value)}
+            value={contact}
+            type="contact"
             id="contact"
             placeholder="Mobile Number"
             className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"

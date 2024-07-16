@@ -110,7 +110,25 @@ export const asyncStudentDelete = () => async (dispatch, getState) => {
   }
 };
 
-// job
+export const asyncStudentUpdate =
+  ({ firstName, lastName, profileImage, email, contact, city, gender }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post("/user/student/update", {
+        firstName,
+        lastName,
+        profileImage,
+        email,
+        contact,
+        city,
+        gender,
+      });
+      console.log(data);
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
 
 export const asyncAddJob =
   ({
@@ -125,6 +143,37 @@ export const asyncAddJob =
   async (dispatch, getState) => {
     try {
       const { data } = await axios.post("/resume/add-job", {
+        designation,
+        profile,
+        organization,
+        location,
+        startDate,
+        endDate,
+        description,
+      });
+      console.log(data);
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncEditJob =
+  (
+    id,
+    {
+      designation,
+      profile,
+      organization,
+      location,
+      startDate,
+      endDate,
+      description,
+    }
+  ) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post(`/resume/edit-job/${id}`, {
         designation,
         profile,
         organization,
@@ -161,7 +210,36 @@ export const asyncAddInternship =
         endDate,
         description,
       });
-      console.log(data);
+      // console.log(data);
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncEditInternship =
+  (
+    id,
+    {
+      profile,
+      organization,
+      location,
+      startDate,
+      endDate,
+      description,
+    }
+  ) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post(`/resume/edit-internship/${id}`, {
+        profile,
+        organization,
+        location,
+        startDate,
+        endDate,
+        description,
+      });
+      // console.log(data);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);
@@ -182,6 +260,19 @@ export const asyncAddResponsibilty =
   async (dispatch, getState) => {
     try {
       const { data } = await axios.post("/resume/add-responsibilitie", {
+        description,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncEditResponsibilty =
+  (id, { description }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post(`/resume/edit-responsibilitie/${id}`, {
         description,
       });
       dispatch(asyncLoad());
@@ -264,11 +355,11 @@ export const asyncAddAccomplishment =
     }
   };
 
-  export const asyncDeleteAccomplishment = (id) => async (dispatch, getState) => {
-    try {
-      await axios.post(`/resume/delete-accomplishment/${id}`);
-      dispatch(asyncLoad());
-    } catch (error) {
-      console.log(error.response.data);
-    }
-  };
+export const asyncDeleteAccomplishment = (id) => async (dispatch, getState) => {
+  try {
+    await axios.post(`/resume/delete-accomplishment/${id}`);
+    dispatch(asyncLoad());
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};

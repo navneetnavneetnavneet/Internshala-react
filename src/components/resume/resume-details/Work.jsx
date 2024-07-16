@@ -1,7 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { asyncDeleteInternship, asyncDeleteJob } from "../../../store/actions/studentActions";
+import {
+  asyncDeleteInternship,
+  asyncDeleteJob,
+} from "../../../store/actions/studentActions";
 
 const Work = (props) => {
   const navigate = useNavigate();
@@ -42,7 +45,9 @@ const Work = (props) => {
                       <p className="text-zinc-600">{internship.description}</p>
                     </div>
                     <div className="flex items-center gap-5">
-                      <i className="ri-pencil-line text-[1.4rem]"></i>
+                      <Link to={`/student/resume/edit_internship/${internship.id}`}>
+                        <i className="ri-pencil-line text-[1.4rem]"></i>
+                      </Link>
                       <i
                         onClick={() => internshipDeleteHandler(internship.id)}
                         className="ri-delete-bin-line text-[1.4rem]"
@@ -67,7 +72,9 @@ const Work = (props) => {
                       <p className="text-zinc-600">{job.description}</p>
                     </div>
                     <div className="flex items-center gap-5">
+                      <Link to={`/student/resume/edit_job/${job.id}`}>
                       <i className="ri-pencil-line text-[1.4rem]"></i>
+                      </Link>
                       <i
                         onClick={() => jobDeleteHandler(job.id)}
                         className="ri-delete-bin-line text-[1.4rem]"

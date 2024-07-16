@@ -29,7 +29,11 @@ const Responsibility = (props) => {
                     {responsibility.description}
                   </h4>
                   <div className="flex items-center gap-5">
-                    <i class="ri-pencil-line text-[1.4rem]"></i>
+                    <Link
+                      to={`/student/resume/edit_responsibility/${responsibility.id}`}
+                    >
+                      <i class="ri-pencil-line text-[1.4rem]"></i>
+                    </Link>
                     <i
                       onClick={() =>
                         deleteResponsibilityHandler(responsibility.id)
