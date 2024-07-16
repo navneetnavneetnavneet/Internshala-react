@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { asyncAddResponsibilty } from "../../../store/actions/studentActions";
 
 const ResponsibilityForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [description, setDescription] = useState("");
 
@@ -16,7 +19,8 @@ const ResponsibilityForm = () => {
     const responsibility = {
       description,
     };
-    console.log(responsibility);
+    dispatch(asyncAddResponsibilty(responsibility));
+    navigate("/student/resume");
   };
 
   return (

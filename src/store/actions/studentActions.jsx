@@ -176,3 +176,21 @@ export const asyncAddInternship =
       console.log(error.response.data);
     }
   };
+
+  export const asyncAddResponsibilty = ({description}) => async (dispatch, getState) => {
+    try {
+      const {data} = await axios.post("/resume/add-responsibilitie", {description});
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+
+  export const asyncDeleteResponsibilty = (id) => async (dispatch, getState) => {
+    try {
+      await axios.post(`resume/delete-responsibilitie/${id}`);
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
