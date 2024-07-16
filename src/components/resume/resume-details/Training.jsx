@@ -1,7 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { asyncDeleteCourse } from "../../../store/actions/studentActions";
 
-const Training = () => {
+const Training = (props) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const courseDeleteHandler = (id) => {
+    dispatch(asyncDeleteCourse(id));
+    navigate("/student/resume");
+  };
+
   return (
     <div className="w-full border-b py-5 text-zinc-600 flex items-start justify-between">
       <h4 className="uppercase w-[15%] text-xs font-semibold">
@@ -9,15 +19,33 @@ const Training = () => {
       </h4>
       <div className="w-[75%]">
         <div>
-          <div className="w-full flex justify-between">
-            <h4 className="font-semibold">something</h4>
-            <div className="flex items-center gap-5">
-              <i class="ri-pencil-line text-[1.4rem]"></i>
-              <i class="ri-delete-bin-line text-[1.4rem]"></i>
-            </div>
+          <div className="w-full flex justify-between flex-col">
+            {props.courses &&
+              props.courses.map((course) => (
+                <div
+                  key={course.id}
+                  className="w-full mb-5 flex items-start justify-between"
+                >
+                  <div className="">
+                    <h4 className="font-semibold">{course.program}</h4>
+                    <p className="text-zinc-600">
+                      {course.organization}, {course.location}
+                    </p>
+                    <p className="text-zinc-600">
+                      {course.startDate}-{course.endDate}
+                    </p>
+                    <p className="text-zinc-600">{course.description}</p>
+                  </div>
+                  <div className="flex items-center gap-5">
+                    <i class="ri-pencil-line text-[1.4rem]"></i>
+                    <i
+                      onClick={() => courseDeleteHandler(course.id)}
+                      class="ri-delete-bin-line text-[1.4rem]"
+                    ></i>
+                  </div>
+                </div>
+              ))}
           </div>
-          <p></p>
-          <p></p>
         </div>
         <Link
           to="/student/resume/training"

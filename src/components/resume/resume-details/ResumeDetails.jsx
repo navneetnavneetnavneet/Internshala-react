@@ -20,7 +20,7 @@ const ResumeDetails = (props) => {
         <Education />
         <Work jobs={props.student.resume.jobs} internship={props.student.resume.internships} />
         <Responsibility responsibilities={props.student.resume.responsibilities} />
-        <Training />
+        <Training courses={props.student.resume.courses} />
         <Project />
         <Portfolio />
         <Accomplishment />

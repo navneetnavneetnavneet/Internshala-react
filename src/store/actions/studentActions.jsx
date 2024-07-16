@@ -142,7 +142,7 @@ export const asyncAddJob =
 
 export const asyncDeleteJob = (id) => async (dispatch, getState) => {
   try {
-    await axios.post(`resume/delete-job/${id}`);
+    await axios.post(`/resume/delete-job/${id}`);
     dispatch(asyncLoad());
   } catch (error) {
     console.log(error.response.data);
@@ -168,27 +168,58 @@ export const asyncAddInternship =
     }
   };
 
-  export const asyncDeleteInternship = (id) => async (dispatch, getState) => {
+export const asyncDeleteInternship = (id) => async (dispatch, getState) => {
+  try {
+    await axios.post(`/resume/delete-internship/${id}`);
+    dispatch(asyncLoad());
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
+
+export const asyncAddResponsibilty =
+  ({ description }) =>
+  async (dispatch, getState) => {
     try {
-      await axios.post(`resume/delete-internship/${id}`);
+      const { data } = await axios.post("/resume/add-responsibilitie", {
+        description,
+      });
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);
     }
   };
 
-  export const asyncAddResponsibilty = ({description}) => async (dispatch, getState) => {
+export const asyncDeleteResponsibilty = (id) => async (dispatch, getState) => {
+  try {
+    await axios.post(`/resume/delete-responsibilitie/${id}`);
+    dispatch(asyncLoad());
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
+
+export const asyncAddCourse =
+  ({ program, organization, location, startDate, endDate, description }) =>
+  async (dispatch, getState) => {
     try {
-      const {data} = await axios.post("/resume/add-responsibilitie", {description});
+      const { data } = await axios.post("/resume/add-course", {
+        program,
+        organization,
+        location,
+        startDate,
+        endDate,
+        description,
+      });
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);
     }
-  }
+  };
 
-  export const asyncDeleteResponsibilty = (id) => async (dispatch, getState) => {
+  export const asyncDeleteCourse = (id) => async (dispatch, getState) => {
     try {
-      await axios.post(`resume/delete-responsibilitie/${id}`);
+      await axios.post(`/resume/delete-course/${id}`);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);

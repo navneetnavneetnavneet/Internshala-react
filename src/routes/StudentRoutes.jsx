@@ -12,7 +12,7 @@ import Application from "../components/student/application/Application";
 import Nav from "../components/student/dashboard/Nav";
 import Bookmark from "../components/student/bookmark/Bookmark";
 import Help from "../components/student/help/Help";
-import Safety from "../components/safety/Safety";
+import Safety from "../components/student/safety/Safety";
 import Contact from "../components/student/cantact/Contact";
 import ChangePassword from "../components/student/change-password/ChangePassword";
 import ChangeEmail from "../components/student/change-email/ChangeEmail";

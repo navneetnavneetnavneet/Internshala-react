@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { asyncAddCourse } from '../../../store/actions/studentActions';
 
 const TrainingForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [program, setProgram] = useState("");
   const [organization, setOrganization] = useState("");
@@ -26,7 +29,8 @@ const TrainingForm = () => {
       endDate,
       description,
     };
-    console.log(training);
+    dispatch(asyncAddCourse(training));
+    navigate("/student/resume");
   };
 
   return (
