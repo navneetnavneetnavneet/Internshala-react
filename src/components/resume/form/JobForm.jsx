@@ -36,7 +36,8 @@ const JobForm = () => {
   };
 
   return (
-    <div className="w-1/2 rounded-lg text-zinc-600 border mx-auto my-10 px-10 py-5">
+    <div className="w-full min-h-full bg-[rgba(0,0,0,.3)] z-[100] absolute top-0 left-1/2 -translate-x-1/2">
+      <div className="w-1/2 bg-white rounded-lg text-zinc-600 border mx-auto my-10 px-10 py-5">
       <i
         onClick={closeFormHandler}
         className="ri-close-line text-[1.4rem] text-end block"
@@ -143,6 +144,7 @@ const JobForm = () => {
           Save
         </button>
       </form>
+    </div>
     </div>
   );
 };

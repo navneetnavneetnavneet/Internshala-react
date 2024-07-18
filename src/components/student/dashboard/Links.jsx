@@ -40,7 +40,7 @@ const Links = (props) => {
         My Application
       </Link>
       <Link
-        to="/bookmark"
+        to="/student/bookmark"
         className="px-4 py-1 block font-medium hover:text-[#00A5EC]"
       >
         My Bookmarks
@@ -55,7 +55,7 @@ const Links = (props) => {
         Edit Prefrences
       </Link>
       <Link
-        to="safety"
+        to="/student/safety"
         className="px-4 py-1 block font-medium hover:text-[#00A5EC]"
       >
         Safety Tips

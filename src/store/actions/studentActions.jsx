@@ -130,6 +130,189 @@ export const asyncStudentUpdate =
     }
   };
 
+// education
+export const asyncAddGraduation =
+  ({ college, startYear, endYear, degree, stream, performance }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post("/resume/add-edu", {
+        college,
+        startYear,
+        endYear,
+        degree,
+        stream,
+        performance,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncEditGraduation =
+  (id, { college, startYear, endYear, degree, stream, performance }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post(`/resume/edit-edu/${id}`, {
+        college,
+        startYear,
+        endYear,
+        degree,
+        stream,
+        performance,
+      });
+      // console.log(data);
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncDeleteGraduation = (id) => async (dispatch, getState) => {
+  try {
+    await axios.post(`/resume/delete-edu/${id}`);
+    dispatch(asyncLoad());
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
+
+export const asyncAddSeniorSecondary =
+  ({ complete, board, performance, stream, school }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post("/resume/add-edu", {
+        complete,
+        board,
+        performance,
+        stream,
+        school,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncEditSeniorSecondary =
+  (id, { complete, board, performance, stream, school }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post(`/resume/add-edu/${id}`, {
+        complete,
+        board,
+        performance,
+        stream,
+        school,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncAddSecondary =
+  ({ complete, board, performance, school }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post("/resume/add-edu", {
+        complete,
+        board,
+        performance,
+        school,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncEditSecondary =
+  (id, { complete, board, performance, school }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post(`/resume/edit-edu/${id}`, {
+        complete,
+        board,
+        performance,
+        school,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncAddDiploma =
+  ({ college, startYear, endYear, stream, performance }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post("/resume/add-edu", {
+        college,
+        startYear,
+        endYear,
+        stream,
+        performance,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncEditDiploma =
+  (id, { college, startYear, endYear, stream, performance }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post(`/resume/edit-edu/${id}`, {
+        college,
+        startYear,
+        endYear,
+        stream,
+        performance,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncAddPhd =
+  ({ college, startYear, endYear, stream, performance }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post("/resume/add-edu", {
+        college,
+        startYear,
+        endYear,
+        stream,
+        performance,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncEditPhd =
+  (id, { college, startYear, endYear, stream, performance }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post(`/resume/edit-edu/${id}`, {
+        college,
+        startYear,
+        endYear,
+        stream,
+        performance,
+      });
+      dispatch(asyncLoad());
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+// education end
+
 export const asyncAddJob =
   ({
     designation,

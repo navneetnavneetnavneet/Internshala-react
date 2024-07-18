@@ -13,6 +13,7 @@ const Profile = () => {
   const [contact, setContact] = useState(employer.contact);
   const [designation, setDesignation] = useState(employer.designation || "");
 
+
   const submitHandler = (e) => {
     e.preventDefault();
 

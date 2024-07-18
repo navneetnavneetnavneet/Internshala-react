@@ -17,7 +17,7 @@ const ResumeDetails = (props) => {
       </p>
       <div className="px-[5%] my-10">
         <Student />
-        <Education />
+        <Education education={props.student.resume.education} />
         <Work jobs={props.student.resume.jobs} internship={props.student.resume.internships} />
         <Responsibility responsibilities={props.student.resume.responsibilities} />
         <Training courses={props.student.resume.courses} />
