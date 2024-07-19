@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { asyncEditCourse } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const EditTrainingForm = () => {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ const EditTrainingForm = () => {
     };
     dispatch(asyncEditCourse(id, training));
     navigate("/student/resume");
+    toast.success("Update Training Details");
   };
 
   return (
@@ -90,7 +92,7 @@ const EditTrainingForm = () => {
             />
           </div>
           <div className="w-full flex justify-between">
-            <div>
+            <div className="w-[48%]">
               <label htmlFor="start" className="font-semibold">
                 Start date
               </label>
@@ -103,7 +105,7 @@ const EditTrainingForm = () => {
                 className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
               />
             </div>
-            <div>
+            <div className="w-[48%]">
               <label htmlFor="end" className="font-semibold">
                 End date
               </label>
@@ -119,7 +121,10 @@ const EditTrainingForm = () => {
           </div>
           <div>
             <label htmlFor="description" className="font-semibold">
-              Description (optional)
+              Description{" "}
+              <span className="text-zinc-400 text-xs font-normal">
+                (optional)
+              </span>
             </label>
             <textarea
               onChange={(e) => setDescription(e.target.value)}
@@ -131,7 +136,7 @@ const EditTrainingForm = () => {
             ></textarea>
           </div>
           <button className="px-4 py-2 rounded bg-[#00A5EC] hover:bg-[#0d95cf] text-white/90 font-semibold">
-            Save
+            Update
           </button>
         </form>
       </div>

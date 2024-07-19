@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { asyncChangePassword } from "../../../store/actions/studentActions";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ChangePassword = () => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ const ChangePassword = () => {
 
     dispatch(asyncChangePassword(password));
     navigate("/student/dashboard");
+    toast.success("Change Password Successfully");
   };
 
   return (
@@ -33,7 +35,7 @@ const ChangePassword = () => {
             className="w-full px-4 py-2 border rounded mt-1 outline-[#00A5EC]"
           />
           <button
-            disabled={password.trim().length > 0 ? false : true}
+            disabled={password.trim().length > 6 ? false : true}
             className="w-full px-4 py-2 rounded bg-[#00A5EC] hover:bg-[#0d95cf]  mt-5 text-white/90 font-semibold"
           >
             Update

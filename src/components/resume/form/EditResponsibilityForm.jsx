@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { asyncEditResponsibilty } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const EditResponsibilityForm = () => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const EditResponsibilityForm = () => {
     };
     dispatch(asyncEditResponsibilty(id, responsibility));
     navigate("/student/resume");
+    toast.success("Update Responsibility Details");
   };
 
   return (
@@ -44,7 +46,10 @@ const EditResponsibilityForm = () => {
         >
           <div>
             <label htmlFor="description" className="font-semibold">
-              Description (optional)
+              Description{" "}
+              <span className="text-zinc-400 text-xs font-normal">
+                (optional)
+              </span>
             </label>
             <p className="font-semibold opacity-50">
               If you have been/are an active part of societies, conducted any

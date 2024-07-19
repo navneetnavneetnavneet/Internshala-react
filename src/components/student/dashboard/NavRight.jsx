@@ -42,7 +42,7 @@ const NavRight = (props) => {
           onClick={hiddenHandler}
           className="hoverdiv hover:border-[#00A5EC] hover:text-[#00A5EC] flex items-center gap-1"
         >
-          {props.student.avatar.url != "" ? (
+          {/* {props.student.avatar.url != "" ? (
             <div className="w-10 h-10 rounded-full overflow-hidden">
               <img className="w-full h-full object-cover" src={props.student.avatar.url} alt="" />
             </div>
@@ -50,7 +50,10 @@ const NavRight = (props) => {
             <h1 className="w-10 h-10 border border-zinc-600 rounded-full flex items-center justify-center">
               {props.student.firstName.charAt(0).toUpperCase()}
             </h1>
-          )}
+          )} */}
+          <h1 className="w-10 h-10 border border-zinc-600 rounded-full flex items-center justify-center">
+              {props.student.firstName.charAt(0).toUpperCase()}
+            </h1>
           <i className="ri-arrow-down-s-fill"></i>
         </div>
 

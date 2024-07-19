@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncLoad } from "../store/actions/studentActions";
+import { asyncIsLoggedInEmployer } from "../store/actions/employerActions";
 
 import Navbar from "../components/navbar/Navbar";
 // student
@@ -25,12 +26,11 @@ import Dashboard from "../components/student/dashboard/Dashboard";
 import EmployerLayout from "../components/employer/EmployerLayout";
 import EmployerRegister from "../components/employer/employer-register/EmployerRegister";
 import EmployerLogin from "../components/employer/employer-login/EmployerLogin";
-// import EmployerForgetPassword from "../components/employer/employer-forget-password/EmployerForgetPassword";
-// import EmployerNewPassword from "../components/employer/employer-forget-password/EmployerNewPassword";
+import EmployerForgetPassword from "../components/employer/forget-password/EmployerForgetPassword";
+import EmployerNewPassword from "../components/employer/forget-password/EmployerNewPassword";
 import Profile from "../components/employer/employer-profile/Profile";
 import EmployerUpdatePassword from "../components/employer/employer-change-password/EmployerUpdatePassword";
 import EmployerDeleteAccount from "../components/employer/employer-delete-account/EmployerDeleteAccount";
-import { asyncIsLoggedInEmployer } from "../store/actions/employerActions";
 import Footer from "../components/footer/Footer";
 
 // resume
@@ -47,8 +47,7 @@ import EditTrainingForm from "../components/resume/form/EditTrainingForm";
 import EditProjectForm from "../components/resume/form/EditProjectForm";
 import EditAdditionalForm from "../components/resume/form/EditAdditionalForm";
 import EditResponsibilityForm from "../components/resume/form/EditResponsibilityForm";
-import EmployerForgetPassword from "../components/employer/forget-password/EmployerForgetPassword";
-import EmployerNewPassword from "../components/employer/forget-password/EmployerNewPassword";
+import OrganizationDetails from "../components/employer/company-details/OrganizationDetails";
 
 const MainRoutes = () => {
   const { pathname } = useLocation();
@@ -73,6 +72,7 @@ const MainRoutes = () => {
     isLoggedIn && navigate("/employer/profile");
     !isLoggedIn && navigate("/");
   }, [isLoggedIn]);
+
   return (
     <div>
       <Routes>
@@ -138,6 +138,10 @@ const MainRoutes = () => {
                 <Route
                     path="/employer/delete_account"
                     element={<EmployerDeleteAccount />}
+                />
+                <Route
+                    path="/employer/company"
+                    element={<OrganizationDetails />}
                 />
             </Route>
       </Routes>

@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { asyncDeleteResponsibilty } from "../../../store/actions/studentActions";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const Responsibility = (props) => {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ const Responsibility = (props) => {
   const deleteResponsibilityHandler = (id) => {
     dispatch(asyncDeleteResponsibilty(id));
     navigate("/student/resume");
+    toast.success("Delete Responsibility Details");
   };
 
   return (

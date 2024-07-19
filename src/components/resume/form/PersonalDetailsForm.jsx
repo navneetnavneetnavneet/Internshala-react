@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { asyncStudentUpdate } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const PersonalDetailsForm = () => {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ const PersonalDetailsForm = () => {
     };
     dispatch(asyncStudentUpdate(updatedStudent));
     navigate("/student/resume");
+    toast.success("Update Personal Details");
   };
 
   return (
@@ -44,15 +46,13 @@ const PersonalDetailsForm = () => {
           onClick={closeFormHandler}
           class="ri-close-line text-[1.4rem] text-end block"
         ></i>
-        <h1 className="text-xl font-semibold text-center">
-          Internship details
-        </h1>
+        <h1 className="text-xl font-semibold text-center">Personal details</h1>
         <form
           onSubmit={submitPersonalDetailsFormHandler}
           className="w-full mt-5 flex flex-col gap-5"
         >
           <div className="w-full flex justify-between">
-            <div>
+            <div className="w-[48%]">
               <label htmlFor="firstname" className="font-semibold">
                 First Name
               </label>
@@ -65,7 +65,7 @@ const PersonalDetailsForm = () => {
                 className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
               />
             </div>
-            <div>
+            <div className="w-[48%]">
               <label htmlFor="lastname" className="font-semibold">
                 Last Name
               </label>

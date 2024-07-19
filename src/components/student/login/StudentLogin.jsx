@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { asyncStudentSignin } from "../../../store/actions/studentActions";
 import { asyncEmployerSignin } from "../../../store/actions/employerActions";
+import { toast } from "react-toastify";
 
 const StudentLogin = () => {
   const { pathname } = useLocation();
@@ -19,6 +20,10 @@ const StudentLogin = () => {
       email,
       password,
     };
+    if (email.trim() == "" || password.trim().length < 6) {
+      toast.error("Student Validation Failed !");
+      return
+    }
     dispatch(asyncStudentSignin(student));
 
     setEmail("");

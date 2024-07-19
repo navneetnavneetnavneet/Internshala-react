@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { asyncEmployerDeleteAccount } from "../../../store/actions/employerActions";
+import { toast } from "react-toastify";
 
 const EmployerDeleteAccount = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const EmployerDeleteAccount = () => {
   const deleteAccountHandler = () => {
     dispatch(asyncEmployerDeleteAccount());
     navigate("/");
+    toast.success("Delete Employer Account Successfully");
   };
 
   return (

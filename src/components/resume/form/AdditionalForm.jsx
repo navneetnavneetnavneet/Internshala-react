@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { asyncAddAccomplishment } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const AdditionalForm = () => {
   const navigate = useNavigate();
@@ -19,8 +20,14 @@ const AdditionalForm = () => {
     const additionalDetails = {
       accomplishment,
     };
+    if (accomplishment.trim() == "") {
+      toast.warning("This filed is required");
+      return;
+    }
+
     dispatch(asyncAddAccomplishment(additionalDetails));
     navigate("/student/resume");
+    toast.success("Add Additional Details");
   };
 
   return (

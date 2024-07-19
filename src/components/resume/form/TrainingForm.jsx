@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { asyncAddCourse } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const TrainingForm = () => {
   const navigate = useNavigate();
@@ -29,8 +30,21 @@ const TrainingForm = () => {
       endDate,
       description,
     };
+
+    if (
+      program.trim() == "" ||
+      organization.trim() == "" ||
+      location.trim() == "" ||
+      startDate.trim() == "" ||
+      endDate.trim() == ""
+    ) {
+      toast.warning("All field required !");
+      return;
+    }
+
     dispatch(asyncAddCourse(training));
     navigate("/student/resume");
+    toast.success("Add Training Details");
   };
 
   return (
@@ -85,7 +99,7 @@ const TrainingForm = () => {
             />
           </div>
           <div className="w-full flex justify-between">
-            <div>
+            <div className="w-[48%]">
               <label htmlFor="start" className="font-semibold">
                 Start date
               </label>
@@ -98,7 +112,7 @@ const TrainingForm = () => {
                 className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
               />
             </div>
-            <div>
+            <div className="w-[48%]">
               <label htmlFor="end" className="font-semibold">
                 End date
               </label>
@@ -114,7 +128,10 @@ const TrainingForm = () => {
           </div>
           <div>
             <label htmlFor="description" className="font-semibold">
-              Description (optional)
+              Description{" "}
+              <span className="text-zinc-400 text-xs font-normal">
+                (optional)
+              </span>
             </label>
             <textarea
               onChange={(e) => setDescription(e.target.value)}

@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { asyncStudentSignout } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const Links = (props) => {
   const navigate = useNavigate();
@@ -10,7 +11,9 @@ const Links = (props) => {
   const logoutHandler = () => {
     dispatch(asyncStudentSignout());
     navigate("/");
+    toast.success("Student Logout Successfully");
   };
+  
   return (
     <div
       className={`w-[15%] py-5 bg-white shadow absolute top-20 right-40 ${props.hiddenDiv}`}

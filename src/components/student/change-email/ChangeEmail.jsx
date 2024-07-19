@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { asyncChangeEmail } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const ChangeEmail = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const ChangeEmail = () => {
 
     dispatch(asyncChangeEmail(email));
     navigate("/student/dashboard");
+    toast.success("Change Email Successfully")
   };
 
   return (

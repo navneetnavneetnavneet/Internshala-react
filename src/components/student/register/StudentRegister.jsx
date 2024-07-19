@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { asyncStudentSignup } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const StudentRegister = () => {
   const navigate = useNavigate();
@@ -22,8 +23,19 @@ const StudentRegister = () => {
       lastName,
     };
 
+    if (
+      email.trim() == "" ||
+      password.trim().length < 6 ||
+      firstName.trim("").length < 5 ||
+      lastName.trim().length < 5
+    ) {
+      toast.error("Student Validation Failed !");
+      return
+    }
+
     dispatch(asyncStudentSignup(newUser));
     navigate("/student/dashboard");
+    toast.success("Student Register Successfully");
   };
 
   return (

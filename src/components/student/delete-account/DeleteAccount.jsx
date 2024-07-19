@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { asyncStudentDelete } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const DeleteAccount = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const DeleteAccount = () => {
   const deleteAccountHandler = () => {
     dispatch(asyncStudentDelete());
     navigate("/");
+    toast.success("Delete Student Account Successfully");
   };
 
   return (

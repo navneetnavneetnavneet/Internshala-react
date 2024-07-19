@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncEmployerEditProfile } from '../../../store/actions/employerActions';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const {employer} = useSelector((state) => state.employerReducer);
@@ -12,8 +14,6 @@ const Profile = () => {
   const [email, setEmail] = useState(employer && employer.email);
   const [contact, setContact] = useState(employer && employer.contact);
   const [designation, setDesignation] = useState(employer && employer.designation || "");
-
-
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ const Profile = () => {
       designation,
     };
     dispatch(asyncEmployerEditProfile(details));
-    
+    navigate("/employer/company");
   };
 
   return (
@@ -96,7 +96,7 @@ const Profile = () => {
           />
         </div>
         <button className="w-full py-2 rounded bg-[#00A5EC] text-white font-semibold">
-          Verify
+          Next
         </button>
       </form>
       <p className="mt-20">

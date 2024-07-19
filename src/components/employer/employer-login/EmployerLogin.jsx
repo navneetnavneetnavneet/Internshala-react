@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { asyncEmployerSignin } from "../../../store/actions/employerActions";
+import { toast } from "react-toastify";
 
 const EmployerLogin = () => {
   const { pathname } = useLocation();
@@ -18,6 +19,10 @@ const EmployerLogin = () => {
       email,
       password,
     };
+    if (email.trim() == "" || password.trim().length < 6) {
+      toast.error("Employer Validation Failed !");
+      return;
+    }
     dispatch(asyncEmployerSignin(employer));
     setEmail("");
     setPassword("");
@@ -57,7 +62,6 @@ const EmployerLogin = () => {
           </NavLink>
         </div>
         <div className="flex flex-col gap-5 mt-5">
-          
           <form onSubmit={submitHandler} className="w-full">
             <div>
               <label htmlFor="email">Email</label>

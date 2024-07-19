@@ -5,18 +5,22 @@ import {
   asyncDeleteInternship,
   asyncDeleteJob,
 } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const Work = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const jobDeleteHandler = (id) => {
     dispatch(asyncDeleteJob(id));
     navigate("/student/resume");
+    toast.success("Delete Job Details");
   };
 
   const internshipDeleteHandler = (id) => {
     dispatch(asyncDeleteInternship(id));
     navigate("/student/resume");
+    toast.success("Delete Internship Details");
   };
 
   return (

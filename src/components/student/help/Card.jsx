@@ -43,8 +43,8 @@ const Card = () => {
 
   return (
     <div className="flex justify-start gap-[2%] flex-wrap my-10">
-      {cardArray.map((card) => (
-        <div className="w-[32%] h-[30vh] mb-[2%] rounded shadow flex flex-col items-center justify-center px-10">
+      {cardArray.map((card, idx) => (
+        <div key={idx} className="w-[32%] h-[30vh] mb-[2%] rounded shadow flex flex-col items-center justify-center px-10">
           <img src={card.image} alt="" />
           <h1 className="text-xl font-semibold text-zinc-600 my-2">
             {card.title}

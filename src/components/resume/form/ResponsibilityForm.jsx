@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { asyncAddResponsibilty } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const ResponsibilityForm = () => {
   const navigate = useNavigate();
@@ -19,8 +20,15 @@ const ResponsibilityForm = () => {
     const responsibility = {
       description,
     };
+
+    if (description.trim() == "") {
+      toast.warning("This field is required");
+      return;
+    }
+
     dispatch(asyncAddResponsibilty(responsibility));
     navigate("/student/resume");
+    toast.success("Add Responsibility Details");
   };
 
   return (
@@ -39,7 +47,7 @@ const ResponsibilityForm = () => {
         >
           <div>
             <label htmlFor="description" className="font-semibold">
-              Description (optional)
+              Description
             </label>
             <p className="font-semibold opacity-50">
               If you have been/are an active part of societies, conducted any

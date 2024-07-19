@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { asyncEmployerSignup } from "../../../store/actions/employerActions";
+import { toast } from "react-toastify";
 
 const EmployerRegister = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,20 @@ const EmployerRegister = () => {
       lastName,
       contact,
     };
+
+    if (
+      email.trim() == "" ||
+      password.trim().length < 6 ||
+      firstName.trim().lastName < 5 ||
+      lastName.trim().length < 5 ||
+      contact.length != 10
+    ) {
+      toast.error("Employer Validation Failed !");
+      return;
+    }
+
     dispatch(asyncEmployerSignup(newEmployer));
+    toast.success("Employer Register Successfully");
   };
   return (
     <div className="flex px-[10%] relative">
@@ -118,7 +132,7 @@ const EmployerRegister = () => {
           </button>
           <h3 className="text-center">
             Already Registerd?
-            <Link to="/student/signin" className="text-[#00A5EC]">
+            <Link to="/employer/signin" className="text-[#00A5EC]">
               Login
             </Link>
           </h3>

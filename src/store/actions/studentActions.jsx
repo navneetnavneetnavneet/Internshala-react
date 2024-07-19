@@ -21,7 +21,6 @@ export const asyncStudentSignup =
         firstName,
         lastName,
       });
-      // console.log(data);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);
@@ -45,7 +44,7 @@ export const asyncStudentSignin =
 
 export const asyncStudentSignout = () => async () => {
   try {
-    await axios.get("/user/student/signout");
+    const {data} = await axios.get("/user/student/signout");
     dispatch(remove());
   } catch (error) {
     console.log(error.response.data);
@@ -68,11 +67,9 @@ export const asyncForgetPassword = (email) => async (dispatch, getState) => {
 export const asyncNewPassword =
   (userId, password) => async (dispatch, getState) => {
     try {
-      console.log(password);
       const { data } = await axios.post(`/user/student/forget-link/${userId}`, {
         password,
       });
-      console.log(data);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -84,7 +81,6 @@ export const asyncChangePassword = (password) => async (dispatch, getState) => {
     const { data } = await axios.post("/user/student/reset-password/", {
       password,
     });
-    console.log(data);
     // dispatch(asyncLoad());
   } catch (error) {
     console.log(error.response.data);
@@ -94,7 +90,6 @@ export const asyncChangePassword = (password) => async (dispatch, getState) => {
 export const asyncChangeEmail = (email) => async (dispatch, getState) => {
   try {
     const { data } = await axios.post("/user/student/change-email", { email });
-    console.log(data);
   } catch (error) {
     console.log(error.response.data);
   }
@@ -102,8 +97,7 @@ export const asyncChangeEmail = (email) => async (dispatch, getState) => {
 
 export const asyncStudentDelete = () => async (dispatch, getState) => {
   try {
-    const { data } = await axios.get("/user/student/delete");
-    console.log(data);
+    await axios.get("/user/student/delete");
     dispatch(remove());
   } catch (error) {
     console.log(error.response.data);
@@ -123,7 +117,6 @@ export const asyncStudentUpdate =
         city,
         gender,
       });
-      console.log(data);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);
@@ -161,7 +154,6 @@ export const asyncEditGraduation =
         stream,
         performance,
       });
-      // console.log(data);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);
@@ -334,7 +326,6 @@ export const asyncAddJob =
         endDate,
         description,
       });
-      console.log(data);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);
@@ -365,7 +356,6 @@ export const asyncEditJob =
         endDate,
         description,
       });
-      console.log(data);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);
@@ -393,7 +383,6 @@ export const asyncAddInternship =
         endDate,
         description,
       });
-      // console.log(data);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);
@@ -412,7 +401,6 @@ export const asyncEditInternship =
         endDate,
         description,
       });
-      // console.log(data);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);

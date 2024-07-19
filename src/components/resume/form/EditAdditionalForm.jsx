@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { asyncEditAccomplishment } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const EditAdditionalForm = () => {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const EditAdditionalForm = () => {
     };
     dispatch(asyncEditAccomplishment(id, additionalDetails));
     navigate("/student/resume");
+    toast.success("Update Additional Details");
   };
 
   return (
@@ -60,7 +62,7 @@ const EditAdditionalForm = () => {
             ></textarea>
           </div>
           <button className="px-4 py-2 rounded bg-[#00A5EC] hover:bg-[#0d95cf] text-white/90 font-semibold">
-            Save
+            Update
           </button>
         </form>
       </div>

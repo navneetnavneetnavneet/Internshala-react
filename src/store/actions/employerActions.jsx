@@ -55,7 +55,6 @@ export const asyncEmployerSignout = () => async (dispatch, getState) => {
 
 export const asyncEmployerForgetPassword = (email) => async (dispatch, getState) => {
   try {
-    console.log(email);
     const { data } = await axios.post("/employe/sendmail", { email });
     dispatch({
       type: "URL_SEND_SUCCESS",
@@ -70,11 +69,9 @@ export const asyncEmployerForgetPassword = (email) => async (dispatch, getState)
 export const asyncEmployerNewPassword =
   (employerId, password) => async (dispatch, getState) => {
     try {
-      console.log(password);
       const { data } = await axios.post(`/employe/forget-link/${employerId}`, {
         password,
       });
-      console.log(data);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -91,7 +88,6 @@ export const asyncEmployerEditProfile =
         contact,
         designation,
       });
-      console.log(data);
       dispatch(asyncIsLoggedInEmployer());
     } catch (error) {
       console.log(error.response.data);
@@ -104,7 +100,6 @@ export const asyncEmployerChnagePassword =
       const { data } = await axios.post("/employe/reset-password", {
         password,
       });
-      console.log(data);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -112,7 +107,7 @@ export const asyncEmployerChnagePassword =
 
 export const asyncEmployerDeleteAccount = () => async (dispatch, getState) => {
   try {
-    const { data } = await axios.get("/employe/delete");
+    await axios.get("/employe/delete");
     dispatch(removedEmployer());
   } catch (error) {
     console.log(error.response.data);

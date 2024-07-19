@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { asyncEditJob } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const EditJobForm = () => {
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ const EditJobForm = () => {
     };
     dispatch(asyncEditJob(id, editjob));
     navigate("/student/resume");
+    toast.success("Update Job Details");
   };
 
   return (
@@ -105,7 +107,7 @@ const EditJobForm = () => {
             />
           </div>
           <div className="w-full flex justify-between">
-            <div>
+            <div className="w-[48%]">
               <label htmlFor="start" className="font-semibold">
                 Start date
               </label>
@@ -118,7 +120,7 @@ const EditJobForm = () => {
                 className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
               />
             </div>
-            <div>
+            <div className="w-[48%]">
               <label htmlFor="end" className="font-semibold">
                 End date
               </label>
@@ -134,7 +136,10 @@ const EditJobForm = () => {
           </div>
           <div>
             <label htmlFor="description" className="font-semibold">
-              Description (optional)
+              Description{" "}
+              <span className="text-zinc-400 text-xs font-normal">
+                (optional)
+              </span>
             </label>
             <textarea
               onChange={(e) => setDescription(e.target.value)}

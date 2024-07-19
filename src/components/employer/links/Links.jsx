@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { asyncEmployerSignout } from "../../../store/actions/employerActions";
+import { toast } from "react-toastify";
 
 const Links = (props) => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const Links = (props) => {
   const logoutHandler = () => {
     dispatch(asyncEmployerSignout());
     navigate("/");
+    toast.success("Logout Employer Successfully");
   };
 
   return (

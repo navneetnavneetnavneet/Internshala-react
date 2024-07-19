@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { asyncDeleteProject } from "../../../store/actions/studentActions";
+import { toast } from "react-toastify";
 
 const Project = (props) => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const Project = (props) => {
   const deleteProjectHandler = (id) => {
     dispatch(asyncDeleteProject(id));
     navigate("/student/resume");
+    toast.success("Delete Project Details");
   };
 
   return (
