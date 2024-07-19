@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { asyncStudentSignin } from "../../../store/actions/studentActions";
 import { asyncEmployerSignin } from "../../../store/actions/employerActions";
 
-const StudentLogin = () => {
+const EmployerLogin = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,12 +14,11 @@ const StudentLogin = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    let student = {
+    let employer = {
       email,
       password,
     };
-    dispatch(asyncStudentSignin(student));
-
+    dispatch(asyncEmployerSignin(employer));
     setEmail("");
     setPassword("");
   };
@@ -28,7 +26,6 @@ const StudentLogin = () => {
   const closeHandler = () => {
     navigate("/student/signup");
   };
-
   return (
     <div className="w-full h-screen bg-zinc-200 flex items-center justify-center">
       <div className="w-[27%] rounded-lg bg-white py-5 px-5">
@@ -60,14 +57,7 @@ const StudentLogin = () => {
           </NavLink>
         </div>
         <div className="flex flex-col gap-5 mt-5">
-          <button className="w-full font-semibold py-3 shadow shadow-zinc-300 rounded ">
-            Login with Google
-          </button>
-          <div className="flex items-center justify-between gap-2">
-            <hr className="w-full h-[1px] bg-zinc-300 " />
-            <h3 className="text-sm font-semibold text-zinc-300">OR</h3>
-            <hr className="w-full h-[1px] bg-zinc-300 " />
-          </div>
+          
           <form onSubmit={submitHandler} className="w-full">
             <div>
               <label htmlFor="email">Email</label>
@@ -92,7 +82,7 @@ const StudentLogin = () => {
               />
             </div>
             <Link
-              to="/student/forget_password"
+              to="/employer/forget_password"
               className="text-[#00A5EC] font-semibold w-full block text-end"
             >
               Forget Password?
@@ -124,4 +114,4 @@ const StudentLogin = () => {
   );
 };
 
-export default StudentLogin;
+export default EmployerLogin;

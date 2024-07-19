@@ -3,7 +3,7 @@ import { isLoggedInEmployer, removedEmployer } from "../reducers/employerSlice";
 
 export const asyncIsLoggedInEmployer = () => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("employe/current");
+    const { data } = await axios.post("/employe/current");
     console.log(data);
     dispatch(isLoggedInEmployer(data));
   } catch (error) {
@@ -52,6 +52,33 @@ export const asyncEmployerSignout = () => async (dispatch, getState) => {
     console.log(error.response.data);
   }
 };
+
+export const asyncEmployerForgetPassword = (email) => async (dispatch, getState) => {
+  try {
+    console.log(email);
+    const { data } = await axios.post("/employe/sendmail", { email });
+    dispatch({
+      type: "URL_SEND_SUCCESS",
+      payload: data,
+    });
+    return data;
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
+
+export const asyncEmployerNewPassword =
+  (employerId, password) => async (dispatch, getState) => {
+    try {
+      console.log(password);
+      const { data } = await axios.post(`/employe/forget-link/${employerId}`, {
+        password,
+      });
+      console.log(data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
 
 export const asyncEmployerEditProfile =
   ({ firstName, lastName, email, contact, designation }) =>

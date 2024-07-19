@@ -23,12 +23,17 @@ import Dashboard from "../components/student/dashboard/Dashboard";
 
 // employer
 import EmployerLayout from "../components/employer/EmployerLayout";
-import EmployerRegister from "../components/student/register/EmployerRegister";
+import EmployerRegister from "../components/employer/employer-register/EmployerRegister";
+import EmployerLogin from "../components/employer/employer-login/EmployerLogin";
+// import EmployerForgetPassword from "../components/employer/employer-forget-password/EmployerForgetPassword";
+// import EmployerNewPassword from "../components/employer/employer-forget-password/EmployerNewPassword";
 import Profile from "../components/employer/employer-profile/Profile";
 import EmployerUpdatePassword from "../components/employer/employer-change-password/EmployerUpdatePassword";
 import EmployerDeleteAccount from "../components/employer/employer-delete-account/EmployerDeleteAccount";
 import { asyncIsLoggedInEmployer } from "../store/actions/employerActions";
 import Footer from "../components/footer/Footer";
+
+// resume
 import JobForm from "../components/resume/form/JobForm";
 import InternshipForm from "../components/resume/form/InternshipForm";
 import TrainingForm from "../components/resume/form/TrainingForm";
@@ -42,8 +47,8 @@ import EditTrainingForm from "../components/resume/form/EditTrainingForm";
 import EditProjectForm from "../components/resume/form/EditProjectForm";
 import EditAdditionalForm from "../components/resume/form/EditAdditionalForm";
 import EditResponsibilityForm from "../components/resume/form/EditResponsibilityForm";
-
-// resume
+import EmployerForgetPassword from "../components/employer/forget-password/EmployerForgetPassword";
+import EmployerNewPassword from "../components/employer/forget-password/EmployerNewPassword";
 
 const MainRoutes = () => {
   const { pathname } = useLocation();
@@ -56,14 +61,14 @@ const MainRoutes = () => {
       dispatch(asyncLoad());
 
       isAuthenticated && navigate("/student/dashboard");
-      !isAuthenticated && navigate("/student/signin");
+      !isAuthenticated && navigate("/");
     }, [isAuthenticated]);
 
 
   const { isLoggedIn } = useSelector((state) => state.employerReducer);
 
   useEffect(() => {
-    // dispatch(asyncIsLoggedInEmployer());
+    dispatch(asyncIsLoggedInEmployer());
 
     isLoggedIn && navigate("/employer/profile");
     !isLoggedIn && navigate("/");
@@ -122,7 +127,9 @@ const MainRoutes = () => {
           </Route>
             <Route path="/employer" element={<EmployerLayout />}>
                 <Route path="/employer/signup" element={<EmployerRegister />} />
-                <Route path="/employer/signin" element={<StudentLogin />} />
+                <Route path="/employer/signin" element={<EmployerLogin />} />
+                <Route path="/employer/forget_password" element={<EmployerForgetPassword />} />
+                <Route path="/employer/forget-link/:employerId" element={<EmployerNewPassword />} />
                 <Route path="/employer/profile" element={<Profile />} />
                 <Route
                     path="/employer/change_password"

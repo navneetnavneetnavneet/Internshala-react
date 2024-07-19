@@ -7,11 +7,12 @@ const Profile = () => {
 
   const {employer} = useSelector((state) => state.employerReducer);
 
-  const [firstName, setFirstName] = useState(employer.firstName);
-  const [lastName, setLastName] = useState(employer.lastName);
-  const [email, setEmail] = useState(employer.email);
-  const [contact, setContact] = useState(employer.contact);
-  const [designation, setDesignation] = useState(employer.designation || "");
+  const [firstName, setFirstName] = useState(employer && employer.firstName);
+  const [lastName, setLastName] = useState(employer && employer.lastName);
+  const [email, setEmail] = useState(employer && employer.email);
+  const [contact, setContact] = useState(employer && employer.contact);
+  const [designation, setDesignation] = useState(employer && employer.designation || "");
+
 
 
   const submitHandler = (e) => {
