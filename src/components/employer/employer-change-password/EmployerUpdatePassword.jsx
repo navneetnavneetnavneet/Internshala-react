@@ -35,7 +35,7 @@ const EmployerUpdatePassword = () => {
             className="w-full px-4 py-2 border rounded mt-1 outline-[#00A5EC]"
           />
           <button
-            disabled={password.trim().length > 6 ? false : true}
+            disabled={password.trim().length > 5 ? false : true}
             className="w-full px-4 py-2 rounded bg-[#00A5EC] hover:bg-[#0d95cf]  mt-5 text-white/90 font-semibold"
           >
             Update

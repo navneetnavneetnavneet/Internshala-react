@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { asyncEmployerEditProfile } from '../../../store/actions/employerActions';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { asyncEmployerEditProfile } from "../../../store/actions/employerActions";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const {employer} = useSelector((state) => state.employerReducer);
+  const { employer } = useSelector((state) => state.employerReducer);
 
   const [firstName, setFirstName] = useState(employer && employer.firstName);
   const [lastName, setLastName] = useState(employer && employer.lastName);
   const [email, setEmail] = useState(employer && employer.email);
   const [contact, setContact] = useState(employer && employer.contact);
-  const [designation, setDesignation] = useState(employer && employer.designation || "");
+  const [designation, setDesignation] = useState(
+    (employer && employer.designation) || ""
+  );
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -100,11 +102,12 @@ const Profile = () => {
         </button>
       </form>
       <p className="mt-20">
-        Need help? Call us at <span className='text-[#00A5EC] font-semibold'>+91 8448444852</span>, available from Mon to Fri, 10 AM -
-        6 PM.
+        Need help? Call us at{" "}
+        <span className="text-[#00A5EC] font-semibold">+91 8448444852</span>,
+        available from Mon to Fri, 10 AM - 6 PM.
       </p>
     </div>
   );
-}
+};
 
-export default Profile
+export default Profile;

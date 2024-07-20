@@ -56,96 +56,118 @@ const MainRoutes = () => {
 
   const { isAuthenticated } = useSelector((state) => state.studentReducer);
 
-    useEffect(() => {
-      dispatch(asyncLoad());
+  useEffect(() => {
+    dispatch(asyncLoad());
 
-      isAuthenticated && navigate("/student/dashboard");
-      !isAuthenticated && navigate("/");
-    }, [isAuthenticated]);
-
+    isAuthenticated ? navigate("/student/dashboard") : navigate("/");
+  }, [isAuthenticated]);
 
   const { isLoggedIn } = useSelector((state) => state.employerReducer);
 
   useEffect(() => {
     dispatch(asyncIsLoggedInEmployer());
 
-    isLoggedIn && navigate("/employer/profile");
-    !isLoggedIn && navigate("/");
+    isLoggedIn ? navigate("/employer/profile") : navigate("/");
   }, [isLoggedIn]);
 
   return (
     <div>
       <Routes>
         <Route path="/" element={<Navbar />} />
-          <Route path="/student" element={<StudentLayout />}>
-            <Route path="/student/signup" element={<StudentRegister />} />
-            <Route path="/student/signin" element={<StudentLogin />} />
-            <Route path="/student/forget_password" element={<ForgetPassword />} />
-            <Route path="/student/forget-link/:userId" element={<NewPassword />} />
-            <Route path="/student/dashboard" element={<Dashboard />} />
-            <Route path="/student/application" element={<Application />} />
-            <Route path="/student/bookmark" element={<Bookmark />} />
-            <Route path="/student/safety" element={<Safety />} />
-            <Route path="/student/help" element={<Help />} />
-            <Route path="/student/contact" element={<Contact />} />
-            <Route path="/student/change_password" element={<ChangePassword />} />
-            <Route path="/student/change_email" element={<ChangeEmail />} />
-            <Route path="/student/delete_account" element={<DeleteAccount />} />
-            
-            <Route path="/student/resume" element={<Resume />} >
-                <Route path="/student/resume/job" element={<JobForm />} />
-                <Route path="/student/resume/internship" element={<InternshipForm />} />
-                <Route path="/student/resume/training" element={<TrainingForm />} />
-                <Route path="/student/resume/project" element={<ProjectForm />} />
-                <Route
-                path="/student/resume/accomplishment"
-                element={<AdditionalForm />}
-                />
-                <Route
-                path="/student/resume/responsibility"
-                element={<ResponsibilityForm />}
-                />
-                <Route
-                path="/student/resume/personal_details"
-                element={<PersonalDetailsForm />}
-                />
-                <Route path="/student/resume/edit_job/:id" element={<EditJobForm />} />
-                <Route path="/student/resume/edit_internship/:id" element={<EditInternshipForm />} />
-                <Route path="/student/resume/edit_training/:id" element={<EditTrainingForm />} />
-                <Route path="/student/resume/edit_project/:id" element={<EditProjectForm />} />
-                <Route path="/student/resume/edit_accomplishment/:id" element={<EditAdditionalForm />} />
-                <Route path="/student/resume/edit_responsibility/:id" element={<EditResponsibilityForm />} />
-            </Route>
-            {/* <Route path="/student/resume/education" element={<EducationDetails />} />
+        <Route path="/student" element={<StudentLayout />}>
+          <Route path="/student/signup" element={<StudentRegister />} />
+          <Route path="/student/signin" element={<StudentLogin />} />
+          <Route path="/student/forget_password" element={<ForgetPassword />} />
+          <Route
+            path="/student/forget-link/:userId"
+            element={<NewPassword />}
+          />
+          <Route path="/student/dashboard" element={<Dashboard />} />
+          <Route path="/student/application" element={<Application />} />
+          <Route path="/student/bookmark" element={<Bookmark />} />
+          <Route path="/student/safety" element={<Safety />} />
+          <Route path="/student/help" element={<Help />} />
+          <Route path="/student/contact" element={<Contact />} />
+          <Route path="/student/change_password" element={<ChangePassword />} />
+          <Route path="/student/change_email" element={<ChangeEmail />} />
+          <Route path="/student/delete_account" element={<DeleteAccount />} />
+
+          <Route path="/student/resume" element={<Resume />}>
+            <Route path="/student/resume/job" element={<JobForm />} />
+            <Route
+              path="/student/resume/internship"
+              element={<InternshipForm />}
+            />
+            <Route path="/student/resume/training" element={<TrainingForm />} />
+            <Route path="/student/resume/project" element={<ProjectForm />} />
+            <Route
+              path="/student/resume/accomplishment"
+              element={<AdditionalForm />}
+            />
+            <Route
+              path="/student/resume/responsibility"
+              element={<ResponsibilityForm />}
+            />
+            <Route
+              path="/student/resume/personal_details"
+              element={<PersonalDetailsForm />}
+            />
+            <Route
+              path="/student/resume/edit_job/:id"
+              element={<EditJobForm />}
+            />
+            <Route
+              path="/student/resume/edit_internship/:id"
+              element={<EditInternshipForm />}
+            />
+            <Route
+              path="/student/resume/edit_training/:id"
+              element={<EditTrainingForm />}
+            />
+            <Route
+              path="/student/resume/edit_project/:id"
+              element={<EditProjectForm />}
+            />
+            <Route
+              path="/student/resume/edit_accomplishment/:id"
+              element={<EditAdditionalForm />}
+            />
+            <Route
+              path="/student/resume/edit_responsibility/:id"
+              element={<EditResponsibilityForm />}
+            />
+          </Route>
+          {/* <Route path="/student/resume/education" element={<EducationDetails />} />
             <Route path="/student/resume/education/graduation" element={<GraduationForm />} />
             <Route path="/student/resume/education/senior_secondary" element={<SeniorSecondaryFrom />} />
             <Route path="/student/resume/education/secondary" element={<SecondaryForm />} />
             <Route path="/student/resume/education/diploma" element={<DiplomaForm />} />
             <Route path="/student/resume/education/phd" element={<PhdForm />} /> */}
-            
-            
-          </Route>
-            <Route path="/employer" element={<EmployerLayout />}>
-                <Route path="/employer/signup" element={<EmployerRegister />} />
-                <Route path="/employer/signin" element={<EmployerLogin />} />
-                <Route path="/employer/forget_password" element={<EmployerForgetPassword />} />
-                <Route path="/employer/forget-link/:employerId" element={<EmployerNewPassword />} />
-                <Route path="/employer/profile" element={<Profile />} />
-                <Route
-                    path="/employer/change_password"
-                    element={<EmployerUpdatePassword />}
-                />
-                <Route
-                    path="/employer/delete_account"
-                    element={<EmployerDeleteAccount />}
-                />
-                <Route
-                    path="/employer/company"
-                    element={<OrganizationDetails />}
-                />
-            </Route>
+        </Route>
+        <Route path="/employer" element={<EmployerLayout />}>
+          <Route path="/employer/signup" element={<EmployerRegister />} />
+          <Route path="/employer/signin" element={<EmployerLogin />} />
+          <Route
+            path="/employer/forget_password"
+            element={<EmployerForgetPassword />}
+          />
+          <Route
+            path="/employer/forget-link/:employerId"
+            element={<EmployerNewPassword />}
+          />
+          <Route path="/employer/profile" element={<Profile />} />
+          <Route
+            path="/employer/change_password"
+            element={<EmployerUpdatePassword />}
+          />
+          <Route
+            path="/employer/delete_account"
+            element={<EmployerDeleteAccount />}
+          />
+          <Route path="/employer/company" element={<OrganizationDetails />} />
+        </Route>
       </Routes>
-        {pathname == "/" ? <Footer /> : ""}
+      {pathname == "/" ? <Footer /> : ""}
     </div>
   );
 };

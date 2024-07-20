@@ -16,7 +16,7 @@ const Course = ({course}) => {
         </p>
         <div className="flex items-center gap-1 text-[#00A5EC]">
           <Link className="text-sm font-semibold">Know More</Link>
-          <i class="ri-arrow-right-s-line text-[1.4rem]"></i>
+          <i className="ri-arrow-right-s-line text-[1.4rem]"></i>
         </div>
       </div>
     </div>
