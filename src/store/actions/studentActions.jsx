@@ -44,7 +44,7 @@ export const asyncStudentSignin =
 
 export const asyncStudentSignout = () => async () => {
   try {
-    const {data} = await axios.get("/user/student/signout");
+    const { data } = await axios.get("/user/student/signout");
     dispatch(remove());
   } catch (error) {
     console.log(error.response.data);
@@ -105,18 +105,27 @@ export const asyncStudentDelete = () => async (dispatch, getState) => {
 };
 
 export const asyncStudentUpdate =
-  ({ firstName, lastName, profileImage, email, contact, city, gender }) =>
+  ({ firstName, lastName, avatar, email, contact, city, gender }) =>
   async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/user/student/update", {
-        firstName,
-        lastName,
-        profileImage,
-        email,
-        contact,
-        city,
-        gender,
-      });
+      const { data } = await axios.post(
+        "/user/student/update",
+        {
+          firstName,
+          lastName,
+          avatar,
+          email,
+          contact,
+          city,
+          gender,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(data);
       dispatch(asyncLoad());
     } catch (error) {
       console.log(error.response.data);

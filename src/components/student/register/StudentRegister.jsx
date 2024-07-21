@@ -34,8 +34,8 @@ const StudentRegister = () => {
     }
 
     dispatch(asyncStudentSignup(newUser));
-    navigate("/student/dashboard");
     toast.success("Student Register Successfully");
+    navigate("/student/dashboard");
   };
 
   return (

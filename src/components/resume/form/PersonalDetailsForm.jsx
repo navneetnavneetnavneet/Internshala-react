@@ -12,7 +12,7 @@ const PersonalDetailsForm = () => {
 
   const [firstName, setFirstName] = useState(student.firstName);
   const [lastName, setLastName] = useState(student.lastName);
-  const [profileImage, setProfileImage] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [email, setEamil] = useState(student.email);
   const [contact, setContact] = useState(student.contact);
   const [city, setCity] = useState(student.city);
@@ -28,7 +28,7 @@ const PersonalDetailsForm = () => {
     const updatedStudent = {
       firstName,
       lastName,
-      profileImage,
+      avatar,
       email,
       contact,
       city,
@@ -80,13 +80,13 @@ const PersonalDetailsForm = () => {
             </div>
           </div>
           <div>
-            <label htmlFor="profileImage" className="font-semibold">
+            <label htmlFor="avatar" className="font-semibold">
               Profile picture <span className="opacity-50">(Recommended)</span>
             </label>
             <input
-              onChange={(e) => setProfileImage(e.target.files[0])}
+              onChange={(e) => setAvatar(e.target.files[0])}
               type="file"
-              id="profileImage"
+              id="avatar"
               className="w-1/2 px-4 py-2 bg-[#EAFCFF] block mt-1 outline-1 outline-sky-200 border rounded"
             />
             <p className="text-xs font-semibold opacity-50 mt-1 tracking-wide">

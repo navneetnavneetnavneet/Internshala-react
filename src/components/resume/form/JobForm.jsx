@@ -16,6 +16,8 @@ const JobForm = () => {
   const [endDate, setEndDate] = useState("");
   const [description, setDescription] = useState("");
 
+  const [workFromHome, setWorkFromHome] = useState(false);
+
   const closeFormHandler = () => {
     navigate(-1);
   };
@@ -41,7 +43,7 @@ const JobForm = () => {
       endDate.trim() == ""
     ) {
       toast.warning("All field required !");
-      return
+      return;
     }
 
     dispatch(asyncAddJob(job));
@@ -105,13 +107,25 @@ const JobForm = () => {
               Location
             </label>
             <input
-              onChange={(e) => setLocation(e.target.value)}
-              value={location}
+              onChange={(e) => !workFromHome && setLocation(e.target.value)}
+              value={workFromHome ? "Work From Home" : location}
               type="text"
               id="location"
               placeholder="e.g. Mumbai"
               className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
             />
+          </div>
+          <div>
+            <input
+              onChange={(e) => {
+                setWorkFromHome(e.target.checked);
+                if (e.target.checked) {
+                  setLocation("Work From Home");
+                }
+              }}
+              type="checkbox"
+            />{" "}
+            Is work from home
           </div>
           <div className="w-full flex justify-between">
             <div className="w-[48%]">
@@ -143,7 +157,10 @@ const JobForm = () => {
           </div>
           <div>
             <label htmlFor="description" className="font-semibold">
-              Description <span className="text-zinc-400 text-xs font-normal">(optional)</span>
+              Description{" "}
+              <span className="text-zinc-400 text-xs font-normal">
+                (optional)
+              </span>
             </label>
             <textarea
               onChange={(e) => setDescription(e.target.value)}
