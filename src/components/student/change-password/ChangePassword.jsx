@@ -39,7 +39,7 @@ const ChangePassword = () => {
             value={password}
             type="password"
             id="password"
-            placeholder="Enter Password"
+            placeholder="Must be 6 characters"
             className="w-full px-4 py-2 border rounded mt-1 outline-[#00A5EC]"
           />
         </div>
@@ -50,7 +50,7 @@ const ChangePassword = () => {
             value={retypePassword}
             type="password"
             id="password"
-            placeholder="Enter Password"
+            placeholder="Must be 6 characters"
             className="w-full px-4 py-2 border rounded mt-1 outline-[#00A5EC]"
           />
         </div>

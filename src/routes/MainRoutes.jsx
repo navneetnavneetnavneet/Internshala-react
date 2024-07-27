@@ -54,21 +54,21 @@ const MainRoutes = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { isAuthenticated } = useSelector((state) => state.studentReducer);
-
-  useEffect(() => {
-    dispatch(asyncLoad());
-
-    isAuthenticated ? navigate("/student/dashboard") : navigate("/");
-  }, [isAuthenticated]);
-
-  const { isLoggedIn } = useSelector((state) => state.employerReducer);
+  const { isAuthenticated, student } = useSelector(
+    (state) => state.studentReducer
+  );
+  const { isLoggedIn, employer } = useSelector((state) => state.employerReducer);
 
   useEffect(() => {
     dispatch(asyncIsLoggedInEmployer());
+    dispatch(asyncLoad());
 
-    isLoggedIn ? navigate("/employer/profile") : navigate("/");
-  }, [isLoggedIn]);
+    if (student) {
+      isAuthenticated ? navigate("/student/dashboard") : navigate("/");
+    } else if (employer) {
+      isLoggedIn ? navigate("/employer/profile") : navigate("/");
+    }
+  }, [isAuthenticated, isLoggedIn, dispatch]);
 
   return (
     <div>

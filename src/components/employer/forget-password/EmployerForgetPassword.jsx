@@ -12,7 +12,7 @@ const EmployerForgetPassword = () => {
     try {
       e.preventDefault();
       const data = await dispatch(asyncEmployerForgetPassword(email));
-console.log(data);
+      console.log(data);
       navigate(`/employer/forget-link/${data.employe._id}`);
     } catch (error) {
       console.log(error);
@@ -38,7 +38,10 @@ console.log(data);
             className="px-4 py-2 rounded w-full border outline-1 outline-sky-200"
           />
         </div>
-        <button className="w-full py-2 my-5 rounded bg-[#00A5EC] text-white font-semibold">
+        <button
+          disabled={email.trim() == "" ? true : false}
+          className="w-full py-2 my-5 rounded bg-[#00A5EC] text-white font-semibold"
+        >
           Submit
         </button>
         <p className="text-zinc-600">

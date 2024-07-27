@@ -5,7 +5,7 @@ export const asyncLoad = () => async (dispatch, getState) => {
   try {
     const { data } = await axios.post("/user/student");
     console.log(data);
-    dispatch(load(data));
+    data && dispatch(load(data));
   } catch (error) {
     console.log(error.response.data);
   }

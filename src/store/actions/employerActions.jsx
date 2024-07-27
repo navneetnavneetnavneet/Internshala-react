@@ -5,7 +5,7 @@ export const asyncIsLoggedInEmployer = () => async (dispatch, getState) => {
   try {
     const { data } = await axios.post("/employe/current");
     console.log(data);
-    dispatch(isLoggedInEmployer(data));
+    data && dispatch(isLoggedInEmployer(data));
   } catch (error) {
     console.log(error.response.data);
   }
@@ -53,18 +53,19 @@ export const asyncEmployerSignout = () => async (dispatch, getState) => {
   }
 };
 
-export const asyncEmployerForgetPassword = (email) => async (dispatch, getState) => {
-  try {
-    const { data } = await axios.post("/employe/sendmail", { email });
-    dispatch({
-      type: "URL_SEND_SUCCESS",
-      payload: data,
-    });
-    return data;
-  } catch (error) {
-    console.log(error.response.data);
-  }
-};
+export const asyncEmployerForgetPassword =
+  (email) => async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post("/employe/sendmail", { email });
+      dispatch({
+        type: "URL_SEND_SUCCESS",
+        payload: data,
+      });
+      return data;
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
 
 export const asyncEmployerNewPassword =
   (employerId, password) => async (dispatch, getState) => {
