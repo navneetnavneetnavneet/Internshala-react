@@ -26,8 +26,8 @@ const StudentRegister = () => {
     if (
       email.trim() == "" ||
       password.trim().length < 6 ||
-      firstName.trim("").length < 5 ||
-      lastName.trim().length < 5
+      firstName.trim("").length < 4 ||
+      lastName.trim().length < 4
     ) {
       toast.error("Student Validation Failed !");
       return

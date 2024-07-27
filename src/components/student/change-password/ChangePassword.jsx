@@ -6,9 +6,10 @@ import { toast } from "react-toastify";
 
 const ChangePassword = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
   const [password, setPassword] = useState("");
   const [retypePassword, setRetypePassword] = useState("");
-  const dispatch = useDispatch();
 
   const changePasswordHandler = (e) => {
     e.preventDefault();
