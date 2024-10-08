@@ -28,7 +28,7 @@ const NavRight = (props) => {
           <i className="ri-arrow-down-s-fill"></i>
         </div>
         <div className="hover:text-[#00A5EC] px-4 h-20 flex items-center gap-2 hover:bg-[#EAFCFF]">
-          <Link className="flex items-center gap-2">Jobs</Link>
+          <Link to="/jobs" className="flex items-center gap-2">Jobs</Link>
           <i className="ri-arrow-down-s-fill"></i>
         </div>
 

@@ -48,6 +48,8 @@ import EditProjectForm from "../components/resume/form/EditProjectForm";
 import EditAdditionalForm from "../components/resume/form/EditAdditionalForm";
 import EditResponsibilityForm from "../components/resume/form/EditResponsibilityForm";
 import OrganizationDetails from "../components/employer/company-details/OrganizationDetails";
+import Jobs from "../components/jobs/Jobs";
+import JobDetails from "../components/jobs/job_details/JobDetails";
 
 const MainRoutes = () => {
   const { pathname } = useLocation();
@@ -57,7 +59,9 @@ const MainRoutes = () => {
   const { isAuthenticated, student } = useSelector(
     (state) => state.studentReducer
   );
-  const { isLoggedIn, employer } = useSelector((state) => state.employerReducer);
+  const { isLoggedIn, employer } = useSelector(
+    (state) => state.employerReducer
+  );
 
   useEffect(() => {
     dispatch(asyncIsLoggedInEmployer());
@@ -166,6 +170,9 @@ const MainRoutes = () => {
           />
           <Route path="/employer/company" element={<OrganizationDetails />} />
         </Route>
+
+        <Route path="/jobs" element={<Jobs />} />
+        <Route path="/job/details/jobname" element={<JobDetails />} />
       </Routes>
       {pathname == "/" ? <Footer /> : ""}
     </div>
