@@ -50,6 +50,8 @@ import EditResponsibilityForm from "../components/resume/form/EditResponsibility
 import OrganizationDetails from "../components/employer/company-details/OrganizationDetails";
 import Jobs from "../components/jobs/Jobs";
 import JobDetails from "../components/jobs/job_details/JobDetails";
+import Internships from "../components/internships/Internships";
+import InternshipDetails from "../components/internships/InternshipDetails";
 
 const MainRoutes = () => {
   const { pathname } = useLocation();
@@ -173,6 +175,12 @@ const MainRoutes = () => {
 
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/job/details/jobname" element={<JobDetails />} />
+
+        <Route path="/internships" element={<Internships />} />
+        <Route
+          path="/internship/details/internship_name"
+          element={<InternshipDetails />}
+        />
       </Routes>
       {pathname == "/" ? <Footer /> : ""}
     </div>

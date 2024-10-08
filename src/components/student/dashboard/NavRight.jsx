@@ -20,7 +20,7 @@ const NavRight = (props) => {
     props.student && (
       <div className="flex items-center gap-10 font-semibold">
         <div className="hover:text-[#00A5EC] px-4 h-20 flex items-center gap-2 hover:bg-[#EAFCFF]">
-          <Link className="flex items-center gap-2">Internship</Link>
+          <Link  to="/internships" className="flex items-center gap-2">Internship</Link>
           <i className="ri-arrow-down-s-fill"></i>
         </div>
         <div className="hover:text-[#00A5EC] px-4 h-20 flex items-center gap-2 hover:bg-[#EAFCFF]">

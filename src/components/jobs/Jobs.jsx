@@ -2,10 +2,11 @@ import React from "react";
 import Job from "./Job";
 import Nav from "../student/dashboard/Nav";
 import { Link } from "react-router-dom";
+import Footer from "../footer/Footer";
 
 const Jobs = () => {
   return (
-    <div>
+    <div className="w-full h-full">
       <Nav />
       <div className="w-full h-[15vh] bg-[#AD2FDA] text-white flex flex-col items-center justify-center">
         <h1 className="text-3xl font-bold">
@@ -30,6 +31,7 @@ const Jobs = () => {
         <Job />
         <Job />
       </div>
+      <Footer />
     </div>
   );
 };
