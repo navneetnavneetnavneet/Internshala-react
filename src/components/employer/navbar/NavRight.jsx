@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import Links from "../links/Links";
 
 const NavRight = (props) => {
-
-  const fullName = Array.of(props.employer.firstName, props.employer.lastName).join(" ");
+  const fullName = Array.of(
+    props.employer.firstName,
+    props.employer.lastName
+  ).join(" ");
 
   const [hiddenDiv, setHiddenDiv] = useState("hidden");
   const mouseEnter = () => {
@@ -17,12 +19,26 @@ const NavRight = (props) => {
 
   return (
     <div className="flex items-center gap-10">
-      <Link to="/employer/profile" className="hover:text-[#00A5EC] font-semibold">
+      <Link
+        to="/employer/profile"
+        className="hover:text-[#00A5EC] font-semibold"
+      >
         Plans and Pricing
       </Link>
-      <Link to="/employer/profile" className="hover:text-[#00A5EC] font-semibold">Dashboard</Link>
-      <Link to="/employer/profile" className="hover:text-[#00A5EC] font-semibold">
-        Post Internship/Job
+      <Link
+        to="/employer/profile"
+        className="hover:text-[#00A5EC] font-semibold"
+      >
+        Dashboard
+      </Link>
+      <Link to="/employer/job" className="hover:text-[#00A5EC] font-semibold">
+        Post Job
+      </Link>
+      <Link
+        to="/employer/internship"
+        className="hover:text-[#00A5EC] font-semibold"
+      >
+        Post Internship
       </Link>
       <i className="hover:text-[#00A5EC] ri-message-2-line"></i>
       <div
@@ -35,7 +51,11 @@ const NavRight = (props) => {
         </h1>
         <i className="ri-arrow-down-s-fill"></i>
       </div>
-      <Links hiddenDiv={hiddenDiv} fullName={fullName} email={props.employer.email} />
+      <Links
+        hiddenDiv={hiddenDiv}
+        fullName={fullName}
+        email={props.employer.email}
+      />
     </div>
   );
 };

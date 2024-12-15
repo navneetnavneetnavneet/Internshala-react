@@ -52,6 +52,7 @@ import Jobs from "../components/jobs/Jobs";
 import JobDetails from "../components/jobs/job_details/JobDetails";
 import Internships from "../components/internships/Internships";
 import InternshipDetails from "../components/internships/InternshipDetails";
+import CreateJob from "../components/employer/employer-create-job/CreateJob";
 
 const MainRoutes = () => {
   const { pathname } = useLocation();
@@ -171,6 +172,7 @@ const MainRoutes = () => {
             element={<EmployerDeleteAccount />}
           />
           <Route path="/employer/company" element={<OrganizationDetails />} />
+          <Route path="/employer/job" element={<CreateJob />} />
         </Route>
 
         <Route path="/jobs" element={<Jobs />} />
