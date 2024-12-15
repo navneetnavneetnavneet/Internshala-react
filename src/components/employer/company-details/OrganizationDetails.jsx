@@ -1,16 +1,34 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { asyncEmployerEditProfile } from "../../../store/actions/employerActions";
+import { useNavigate } from "react-router-dom";
 
 const OrganizationDetails = () => {
-  const [organizationName, setOrganizationName] = useState("");
-  const [organizationDescription, setOrganizationDescrp] = useState("");
-  const [organizationCity, setOrganizationCity] = useState("");
-  const [industry, setIndustry] = useState("");
-  const [numberOfEmployees, setNumberOfEmployees] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { employer } = useSelector((state) => state.employerReducer);
+
+  const [organizationName, setOrganizationName] = useState(
+    (employer && employer.organizationName) || ""
+  );
+  const [organizationDescription, setOrganizationDescrp] = useState(
+    (employer && employer.organizationDescription) || ""
+  );
+  const [organizationCity, setOrganizationCity] = useState(
+    (employer && employer.organizationCity) || ""
+  );
+  const [numberOfEmployees, setNumberOfEmployees] = useState(
+    (employer && employer.numberOfEmployees) || ""
+  );
+  const [industry, setIndustry] = useState(
+    (employer && employer.industry) || ""
+  );
   const [organizationLogo, setOrganizationLogo] = useState("");
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    let organization = {
+    let organizationDetails = {
       organizationName,
       organizationDescription,
       organizationCity,
@@ -18,7 +36,9 @@ const OrganizationDetails = () => {
       numberOfEmployees,
       organizationLogo,
     };
-    console.log(organization);
+
+    await dispatch(asyncEmployerEditProfile(organizationDetails));
+    navigate("/employer/profile");
   };
 
   return (
@@ -96,6 +116,7 @@ const OrganizationDetails = () => {
             </span>
           </label>
           <input
+            onChange={(e) => setOrganizationLogo(e.target.files[0])}
             type="file"
             id="logo"
             placeholder="Upload logo"

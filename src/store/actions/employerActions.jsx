@@ -79,16 +79,42 @@ export const asyncEmployerNewPassword =
   };
 
 export const asyncEmployerEditProfile =
-  ({ firstName, lastName, email, contact, designation }) =>
+  ({
+    firstName,
+    lastName,
+    email,
+    contact,
+    designation,
+    organizationName,
+    organizationDescription,
+    organizationCity,
+    industry,
+    numberOfEmployees,
+    organizationLogo,
+  }) =>
   async (dispatch, getState) => {
     try {
-      const { data } = await axios.post("/employe/update", {
-        firstName,
-        lastName,
-        email,
-        contact,
-        designation,
-      });
+      const { data } = await axios.post(
+        "/employe/update",
+        {
+          firstName,
+          lastName,
+          email,
+          contact,
+          designation,
+          organizationName,
+          organizationDescription,
+          organizationCity,
+          industry,
+          numberOfEmployees,
+          organizationLogo,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       dispatch(asyncIsLoggedInEmployer());
     } catch (error) {
       console.log(error.response.data);
