@@ -140,3 +140,13 @@ export const asyncEmployerDeleteAccount = () => async (dispatch, getState) => {
     console.log(error.response.data);
   }
 };
+
+export const asyncCreateInternship = (internshipDetails) => async (dispatch, getState) => {
+  try {
+    const { data } = await axios.post("/employe/internship/create", internshipDetails);
+    await dispatch(asyncIsLoggedInEmployer());
+    // console.log(data);
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};

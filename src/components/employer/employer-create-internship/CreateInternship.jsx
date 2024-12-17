@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { asyncCreateInternship } from "../../../store/actions/employerActions";
 
 const CreateInternship = () => {
   const dispatch = useDispatch();
@@ -11,15 +12,10 @@ const CreateInternship = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // dispatch();
-
+  const onSubmit = async (data) => {
+    await dispatch(asyncCreateInternship(data));
     reset();
   };
-
-  console.log(errors);
-  
 
   return (
     <div className="w-full py-10">
@@ -60,6 +56,23 @@ const CreateInternship = () => {
               {...register("skill", { required: true })}
             />
             {errors.skill && errors.skill.type === "required" && (
+              <span className="text-xs text-red-500">
+                This field is required
+              </span>
+            )}
+          </div>
+          <div>
+            <label htmlFor="duration" className="font-semibold">
+              Duration
+            </label>
+            <input
+              type="text"
+              name="duration"
+              placeholder="Enter required skill"
+              className="w-full px-4 py-2  mt-1 outline-1 outline-sky-200 border rounded"
+              {...register("duration", { required: true })}
+            />
+            {errors.duration && errors.duration.type === "required" && (
               <span className="text-xs text-red-500">
                 This field is required
               </span>
