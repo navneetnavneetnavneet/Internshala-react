@@ -141,11 +141,25 @@ export const asyncEmployerDeleteAccount = () => async (dispatch, getState) => {
   }
 };
 
-export const asyncCreateInternship = (internshipDetails) => async (dispatch, getState) => {
+export const asyncCreateInternship =
+  (internshipDetails) => async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post(
+        "/employe/internship/create",
+        internshipDetails
+      );
+      await dispatch(asyncIsLoggedInEmployer());
+      // console.log(data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const asyncCreateJob = (jobDetails) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.post("/employe/internship/create", internshipDetails);
+    const { data } = await axios.post("/employe/job/create", jobDetails);
     await dispatch(asyncIsLoggedInEmployer());
-    // console.log(data);
+    console.log(data);
   } catch (error) {
     console.log(error.response.data);
   }

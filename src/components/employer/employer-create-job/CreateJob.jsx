@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { asyncCreateJob } from "../../../store/actions/employerActions";
+import { useNavigate } from "react-router-dom";
 
 const CreateJob = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const {
@@ -13,10 +16,9 @@ const CreateJob = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    // dispatch();
-
+    dispatch(asyncCreateJob(data));
     reset();
+    navigate("/employer/profile");
   };
 
   return (

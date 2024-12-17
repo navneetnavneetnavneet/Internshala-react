@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { asyncCreateInternship } from "../../../store/actions/employerActions";
+import { useNavigate } from "react-router-dom";
 
 const CreateInternship = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const {
@@ -15,6 +17,7 @@ const CreateInternship = () => {
   const onSubmit = async (data) => {
     await dispatch(asyncCreateInternship(data));
     reset();
+    navigate("/employer/profile");
   };
 
   return (
